@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site, telLink, mailtoLink, whatsappUrl } from '../data/site';
+import { Icon } from 'astro-icon/components';
+---
+
+<BaseLayout
+  title="Contacto"
+  description={`Contacta con ${site.tituloProfesional} en ${site.ciudad}: teléfono, email, WhatsApp o formulario.`}
+>
+  <section class="section">
+    <div class="container-prose max-w-3xl text-center">
+      <span class="eyebrow">Contacto</span>
+      <h1 class="mt-3 text-4xl sm:text-5xl text-brand-900">¿Hablamos?</h1>
+      <p class="mt-6 text-lg text-brand-700">
+        Cuéntame brevemente qué te ocurre y te respondo personalmente. Toda consulta es
+        confidencial y sin compromiso.
+      </p>
+    </div>
+  </section>
+
+  <section class="pb-20">
+    <div class="container-prose grid lg:grid-cols-5 gap-10">
+      <div class="lg:col-span-3 bg-white rounded-3xl p-8 sm:p-10 border border-brand-100 shadow-soft">
+        <h2 class="font-display text-2xl text-brand-900 mb-6">Escríbeme</h2>
+        <ContactForm />
+      </div>
+
+      <aside class="lg:col-span-2 space-y-6">
+        <div class="bg-cream-100 rounded-3xl p-7">
+          <h3 class="font-display font-semibold text-brand-900 text-lg">Otras vías</h3>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li>
+              <a href={telLink} class="flex items-center gap-3 text-brand-800 hover:text-brand-600">
+                <Icon name="lucide:phone" class="w-5 h-5 text-brand-500" /> {site.telefono}
+              </a>
+            </li>
+            <li>
+              <a href={mailtoLink} class="flex items-center gap-3 text-brand-800 hover:text-brand-600">
+                <Icon name="lucide:mail" class="w-5 h-5 text-brand-500" /> {site.email}
+              </a>
+            </li>
+            <li>
+              <a href={whatsappUrl} target="_blank" rel="noopener" class="flex items-center gap-3 text-brand-800 hover:text-brand-600">
+                <Icon name="lucide:message-circle" class="w-5 h-5 text-brand-500" /> WhatsApp
+              </a>
+            </li>
+            {site.redes.linkedin && (
+              <li>
+                <a href={site.redes.linkedin} target="_blank" rel="noopener" class="flex items-center gap-3 text-brand-800 hover:text-brand-600">
+                  <Icon name="lucide:linkedin" class="w-5 h-5 text-brand-500" /> LinkedIn
+                </a>
+              </li>
+            )}
+          </ul>
+        </div>
+
+        <div class="bg-cream-100 rounded-3xl p-7">
+          <h3 class="font-display font-semibold text-brand-900 text-lg">Disponibilidad</h3>
+          <p class="mt-3 text-sm text-brand-700 flex items-center gap-3">
+            <Icon name="lucide:clock" class="w-5 h-5 text-brand-500 shrink-0" />
+            <span>
+              Lunes a viernes · 9:00 – 13:00<br />
+              Miércoles · 16:00 – 21:00
+            </span>
+          </p>
+          <p class="mt-3 text-sm text-brand-700 flex gap-3">
+            <Icon name="lucide:video" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" />
+            <span>Sesiones 100% online.</span>
+          </p>
+        </div>
+
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener"
+          class="block bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 rounded-3xl p-6 transition-colors"
+        >
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">
+              <Icon name="lucide:message-circle" class="w-5 h-5 text-white" />
+            </div>
+            <p class="font-display font-semibold text-brand-900">¿Prefieres WhatsApp?</p>
+          </div>
+          <p class="text-sm text-brand-700 mt-3">
+            También puedes escribirme directamente por ahí, suele ser la vía más rápida.
+          </p>
+        </a>
+
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="section">
+  <div class="container-prose">
+    <div class="relative overflow-hidden rounded-3xl bg-brand-700 text-white px-8 py-14 sm:px-14 sm:py-16 text-center">
+      <div aria-hidden="true" class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-brand-500/40 blur-3xl"></div>
+      <div aria-hidden="true" class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent-300/20 blur-3xl"></div>
+
+      <div class="relative">
+        <h2 class="text-3xl sm:text-4xl font-display font-semibold">
+          ¿Quieres dar el primer paso?
+        </h2>
+        <p class="mt-4 max-w-xl mx-auto text-cream-100">
+          La primera sesión me sirve para conocernos, entender qué te trae aquí y decidir
+          juntos los siguientes pasos. Sin compromiso.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="/contacto" class="btn-accent">
+            <Icon name="lucide:mail" class="w-4 h-4" />
+            Contacta conmigo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

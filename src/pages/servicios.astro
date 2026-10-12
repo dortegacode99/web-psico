@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { Icon } from 'astro-icon/components';
+
+const modalidades = [
+  {
+    icon: 'lucide:video',
+    titulo: 'Sesiones online',
+    texto: 'Todas las sesiones se hacen por videollamada en una plataforma segura conforme al RGPD. Solo necesitas un dispositivo con cámara y un espacio tranquilo donde poder hablar.',
+  },
+  {
+    icon: 'lucide:calendar-clock',
+    titulo: 'Flexibilidad horaria',
+    texto: 'Horarios compatibles con jornada laboral. Reservas en el calendario online y, si surge algo, los reprogramamos sin coste con 24 h de antelación.',
+  },
+  {
+    icon: 'lucide:lock',
+    titulo: 'Confidencialidad total',
+    texto: 'Lo tratado en sesión está protegido por el secreto profesional. Cumplimiento estricto del RGPD y de la normativa deontológica del Colegio Oficial de Psicología.',
+  },
+];
+---
+
+<BaseLayout
+  title="Servicios"
+  description="Áreas de intervención: ansiedad, depresión, autoestima, duelo, relaciones, estrés laboral. Terapia online para jóvenes y adultos."
+>
+  <section class="section">
+    <div class="container-prose max-w-3xl text-center">
+      <span class="eyebrow">Servicios</span>
+      <h1 class="mt-3 text-4xl sm:text-5xl text-brand-900">Áreas de intervención</h1>
+      <p class="mt-6 text-lg text-brand-700">
+        Acompaño a jóvenes y adultos en momentos de malestar, cambio o búsqueda de claridad.
+        Trabajamos juntos para entender qué ocurre y construir herramientas propias.
+      </p>
+    </div>
+  </section>
+
+  <ServicesGrid />
+
+  <section class="section">
+    <div class="container-prose">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Cómo trabajo</span>
+        <h2 class="mt-3 text-3xl sm:text-4xl text-brand-900">Cómo son las sesiones</h2>
+      </div>
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        {modalidades.map((m) => (
+          <div class="bg-white rounded-3xl p-7 border border-brand-100">
+            <div class="w-12 h-12 rounded-2xl bg-accent-100 flex items-center justify-center">
+              <Icon name={m.icon} class="w-6 h-6 text-accent-600" />
+            </div>
+            <h3 class="mt-5 font-display font-semibold text-lg text-brand-900">{m.titulo}</h3>
+            <p class="mt-2 text-sm text-brand-700 leading-relaxed">{m.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ProcessSteps />
+
+  <CtaBanner />
+</BaseLayout>

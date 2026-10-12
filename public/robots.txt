@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /aviso-legal
+
+Sitemap: https://ejemplo.com/sitemap-index.xml

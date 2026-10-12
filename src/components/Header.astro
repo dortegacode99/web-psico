@@ -1,0 +1,79 @@
+---
+import { site } from '../data/site';
+import { Icon } from 'astro-icon/components';
+
+const nav = [
+  { href: '/', label: 'Inicio' },
+  { href: '/sobre-mi', label: 'Sobre mí' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="sticky top-0 z-40 bg-cream-50/85 backdrop-blur border-b border-brand-100">
+  <div class="container-prose flex items-center justify-between h-16">
+    <a href="/" class="flex items-center gap-2 font-display font-semibold text-brand-700 text-lg">
+      <Icon name="lucide:sprout" class="w-6 h-6 text-brand-500" />
+      <span>{site.nombre === '[NOMBRE Y APELLIDOS]' ? 'Tu Psicólogo Online' : site.nombre}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1" aria-label="Principal">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'px-3 py-2 text-sm rounded-full transition-colors',
+            path === item.href
+              ? 'text-brand-700 bg-brand-100'
+              : 'text-brand-800 hover:text-brand-600 hover:bg-brand-50',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <a href="/contacto" class="hidden md:inline-flex btn-primary text-sm py-2 px-4">
+      Contacta
+    </a>
+
+    <button
+      type="button"
+      id="mobile-toggle"
+      class="md:hidden p-2 -mr-2 text-brand-700"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <Icon name="lucide:menu" class="w-6 h-6" />
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-brand-100 bg-cream-50">
+    <nav class="container-prose py-4 flex flex-col gap-1" aria-label="Móvil">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'px-3 py-2 rounded-lg text-sm',
+            path === item.href ? 'bg-brand-100 text-brand-700' : 'text-brand-800 hover:bg-brand-50',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a href="/contacto" class="btn-primary mt-2 self-start">Contacta conmigo</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(open));
+  });
+</script>

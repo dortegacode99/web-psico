@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AboutSection from '../components/AboutSection.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { Icon } from 'astro-icon/components';
+
+const formacion = [
+  'Grado en Psicología — Universidad Complutense de Madrid (2017–2021)',
+  'Máster Universitario en Psicología General Sanitaria — Universidad Pontificia Comillas ICAI-ICADE (2021–2023)',
+  'Máster en Especialización Terapéutica Cognitivo-Conductual en Población Infanto-Juvenil — Universidad Pontificia Comillas ICAI-ICADE (2023)',
+];
+
+const valores = [
+  { icon: 'lucide:heart', titulo: 'Cercanía', texto: 'Una relación terapéutica honesta y sin juicios es la base. Sin confianza, no hay proceso que funcione.' },
+  { icon: 'lucide:shield-check', titulo: 'Rigor', texto: 'Trabajo con técnicas avaladas por la evidencia científica, adaptadas a lo que tú necesitas.' },
+  { icon: 'lucide:lock', titulo: 'Confidencialidad', texto: 'Lo que se habla en sesión, se queda en sesión. Plataforma segura y conforme al RGPD.' },
+];
+---
+
+<BaseLayout
+  title="Sobre mí"
+  description="Conoce mi formación, enfoque terapéutico y forma de trabajar en terapia online para jóvenes y adultos."
+>
+  <section class="section">
+    <div class="container-prose max-w-3xl text-center">
+      <span class="eyebrow">Sobre mí</span>
+      <h1 class="mt-3 text-4xl sm:text-5xl text-brand-900">
+        Una mirada cercana, profesional y siempre de tu lado
+      </h1>
+      <p class="mt-6 text-lg text-brand-700">
+        Soy Jacobo Chamorro, psicólogo general sanitario colegiado en Madrid. Trabajo
+        online con jóvenes y adultos desde el respeto a su historia, combinando
+        escucha cálida y herramientas prácticas para que no solo te sientas comprendido,
+        sino que avances en lo que de verdad te importa.
+      </p>
+    </div>
+  </section>
+
+  <AboutSection />
+
+  <section class="section bg-white">
+    <div class="container-prose grid lg:grid-cols-3 gap-8">
+      {valores.map((v) => (
+        <div class="bg-cream-100 rounded-3xl p-7">
+          <div class="w-12 h-12 rounded-2xl bg-brand-500 text-white flex items-center justify-center">
+            <Icon name={v.icon} class="w-6 h-6" />
+          </div>
+          <h3 class="mt-5 font-display font-semibold text-lg text-brand-900">{v.titulo}</h3>
+          <p class="mt-2 text-sm text-brand-700 leading-relaxed">{v.texto}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-prose grid lg:grid-cols-2 gap-12">
+      <div>
+        <span class="eyebrow">Formación</span>
+        <h2 class="mt-3 text-3xl text-brand-900">Formación</h2>
+        <ul class="mt-6 space-y-3">
+          {formacion.map((f) => (
+            <li class="flex gap-3 text-brand-700">
+              <Icon name="lucide:graduation-cap" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" />
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <span class="eyebrow">Enfoque</span>
+        <h2 class="mt-3 text-3xl text-brand-900">Cómo trabajo</h2>
+        <div class="mt-6 space-y-4 text-brand-700 leading-relaxed">
+          <p>
+            Trabajo principalmente con las terapias de tercera generación y el modelo
+            cognitivo-conductual, incorporando técnicas de la terapia familiar sistémica
+            cuando ayudan a situar lo que ocurre dentro del contexto relacional.
+          </p>
+          <p>
+            Las sesiones combinan escucha sin juicio y orientación práctica: primero
+            entender de dónde viene lo que sientes, después construir herramientas para
+            avanzar. Adapto el modelo a cada persona, sin método único.
+          </p>
+          <p>
+            Áreas de trabajo principales: ansiedad, depresión, autoestima, duelo,
+            relaciones familiares y de pareja, y estrés laboral.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

@@ -1,0 +1,60 @@
+---
+import { site, telLink, mailtoLink } from '../data/site';
+import { Icon } from 'astro-icon/components';
+
+const year = new Date().getFullYear();
+const redes = [
+  { url: site.redes.instagram, icon: 'lucide:instagram', label: 'Instagram' },
+  { url: site.redes.facebook, icon: 'lucide:facebook', label: 'Facebook' },
+].filter((r) => r.url);
+---
+
+<footer class="bg-brand-800 text-cream-100 mt-16">
+  <div class="container-prose py-14 grid gap-10 md:grid-cols-3">
+    <div>
+      <p class="font-display font-semibold text-lg text-white">
+        {site.nombre === '[NOMBRE Y APELLIDOS]' ? 'Tu Psicólogo Online' : site.nombre}
+      </p>
+      <p class="text-sm text-cream-200 mt-1">Col. {site.colegiado}</p>
+      <p class="text-sm text-cream-200 mt-4 max-w-xs">{site.tagline}</p>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Contacto</h3>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href={telLink} class="hover:text-white inline-flex items-center gap-2"><Icon name="lucide:phone" class="w-4 h-4" />{site.telefono}</a></li>
+        <li><a href={mailtoLink} class="hover:text-white inline-flex items-center gap-2"><Icon name="lucide:mail" class="w-4 h-4" />{site.email}</a></li>
+        <li class="inline-flex items-start gap-2"><Icon name="lucide:video" class="w-4 h-4 mt-0.5" /><span>Atención online · {site.ciudad}</span></li>
+        {site.redes.linkedin && (
+          <li><a href={site.redes.linkedin} target="_blank" rel="noopener" class="hover:text-white inline-flex items-center gap-2"><Icon name="lucide:linkedin" class="w-4 h-4" />LinkedIn</a></li>
+        )}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Enlaces</h3>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href="/sobre-mi" class="hover:text-white">Sobre mí</a></li>
+        <li><a href="/servicios" class="hover:text-white">Servicios</a></li>
+        <li><a href="/contacto" class="hover:text-white">Contacto</a></li>
+        <li><a href="/aviso-legal" class="hover:text-white">Aviso legal y privacidad</a></li>
+      </ul>
+
+      {redes.length > 0 && (
+        <div class="mt-6 flex gap-3">
+          {redes.map((r) => (
+            <a href={r.url} aria-label={r.label} target="_blank" rel="noopener" class="p-2 rounded-full bg-brand-700 hover:bg-brand-600">
+              <Icon name={r.icon} class="w-4 h-4" />
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+
+  <div class="border-t border-brand-700">
+    <div class="container-prose py-5 text-xs text-cream-200">
+      <p>© {year} {site.nombre === '[NOMBRE Y APELLIDOS]' ? site.tituloProfesional : site.nombre}. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,79 @@
+---
+import { site } from '../data/site';
+---
+
+<form
+  action={site.formspreeEndpoint}
+  method="POST"
+  class="space-y-5"
+>
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div>
+      <label for="nombre" class="block text-sm font-medium text-brand-800">Nombre *</label>
+      <input
+        id="nombre"
+        name="nombre"
+        type="text"
+        required
+        autocomplete="name"
+        class="mt-1 w-full rounded-xl border-brand-200 bg-white focus:border-brand-500 focus:ring-brand-500"
+      />
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-medium text-brand-800">Email *</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+        class="mt-1 w-full rounded-xl border-brand-200 bg-white focus:border-brand-500 focus:ring-brand-500"
+      />
+    </div>
+  </div>
+
+  <div>
+    <label for="telefono" class="block text-sm font-medium text-brand-800">Teléfono</label>
+    <input
+      id="telefono"
+      name="telefono"
+      type="tel"
+      autocomplete="tel"
+      class="mt-1 w-full rounded-xl border-brand-200 bg-white focus:border-brand-500 focus:ring-brand-500"
+    />
+  </div>
+
+  <div>
+    <label for="mensaje" class="block text-sm font-medium text-brand-800">¿En qué puedo ayudarte? *</label>
+    <textarea
+      id="mensaje"
+      name="mensaje"
+      rows="5"
+      required
+      class="mt-1 w-full rounded-xl border-brand-200 bg-white focus:border-brand-500 focus:ring-brand-500"
+    ></textarea>
+  </div>
+
+  <label class="flex items-start gap-3 text-sm text-brand-700">
+    <input
+      type="checkbox"
+      name="rgpd"
+      required
+      class="mt-1 rounded border-brand-300 text-brand-500 focus:ring-brand-500"
+    />
+    <span>
+      He leído y acepto el <a href="/aviso-legal" class="underline text-brand-700 hover:text-brand-900">aviso legal y la política de privacidad</a>.
+    </span>
+  </label>
+
+  <!-- Honeypot anti-spam (Formspree lo respeta) -->
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+  <button type="submit" class="btn-primary w-full sm:w-auto">
+    Enviar mensaje
+  </button>
+
+  <p class="text-xs text-brand-600">
+    Te responderé personalmente en menos de 24 horas laborables.
+  </p>
+</form>

@@ -1,0 +1,29 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env
+.env
+.env.production
+.env.local
+
+# editores
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+.vercel
+
+# Documentos privados de Jacobo (consentimientos con datos personales) e imágenes
+# fuente que la web no usa: se quedan solo en el NAS, NUNCA al repo.
+src/data/images/

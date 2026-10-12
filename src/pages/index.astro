@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import FAQ from '../components/FAQ.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+---
+
+<BaseLayout jsonLd>
+  <Hero />
+  <AboutSection compact />
+  <ServicesGrid />
+  <ProcessSteps />
+  <FAQ />
+  <CtaBanner />
+</BaseLayout>
