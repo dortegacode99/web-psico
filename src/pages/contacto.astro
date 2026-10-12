@@ -2,7 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { site, telLink, mailtoLink, whatsappUrl } from '../data/site';
+import { contacto } from '../data/content';
 import { Icon } from 'astro-icon/components';
+
+const { cabecera } = contacto;
 ---
 
 <BaseLayout
@@ -11,19 +14,16 @@ import { Icon } from 'astro-icon/components';
 >
   <section class="section">
     <div class="container-prose max-w-3xl text-center">
-      <span class="eyebrow">Contacto</span>
-      <h1 class="mt-3 text-4xl sm:text-5xl text-brand-900">¿Hablamos?</h1>
-      <p class="mt-6 text-lg text-brand-700">
-        Cuéntame brevemente qué te ocurre y te respondo personalmente. Toda consulta es
-        confidencial y sin compromiso.
-      </p>
+      {cabecera.etiqueta && <span class="eyebrow">{cabecera.etiqueta}</span>}
+      <h1 class="mt-3 text-4xl sm:text-5xl text-brand-900">{cabecera.titulo}</h1>
+      {cabecera.parrafos.map((p) => <p class="mt-6 text-lg text-brand-700">{p}</p>)}
     </div>
   </section>
 
   <section class="pb-20">
     <div class="container-prose grid lg:grid-cols-5 gap-10">
       <div class="lg:col-span-3 bg-white rounded-3xl p-8 sm:p-10 border border-brand-100 shadow-soft">
-        <h2 class="font-display text-2xl text-brand-900 mb-6">Escríbeme</h2>
+        <h2 class="font-display text-2xl text-brand-900 mb-6">{contacto.formularioTitulo}</h2>
         <ContactForm />
       </div>
 
@@ -58,17 +58,20 @@ import { Icon } from 'astro-icon/components';
 
         <div class="bg-cream-100 rounded-3xl p-7">
           <h3 class="font-display font-semibold text-brand-900 text-lg">Disponibilidad</h3>
-          <p class="mt-3 text-sm text-brand-700 flex items-center gap-3">
-            <Icon name="lucide:clock" class="w-5 h-5 text-brand-500 shrink-0" />
-            <span>
-              Lunes a viernes · 9:00 – 13:00<br />
-              Miércoles · 16:00 – 21:00
-            </span>
-          </p>
-          <p class="mt-3 text-sm text-brand-700 flex gap-3">
-            <Icon name="lucide:video" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" />
-            <span>Sesiones 100% online.</span>
-          </p>
+          {contacto.horario.length > 0 && (
+            <p class="mt-3 text-sm text-brand-700 flex items-center gap-3">
+              <Icon name="lucide:clock" class="w-5 h-5 text-brand-500 shrink-0" />
+              <span>
+                {contacto.horario.map((linea, i) => <Fragment>{i > 0 && <br />}{linea}</Fragment>)}
+              </span>
+            </p>
+          )}
+          {contacto.modalidad && (
+            <p class="mt-3 text-sm text-brand-700 flex gap-3">
+              <Icon name="lucide:video" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" />
+              <span>{contacto.modalidad}</span>
+            </p>
+          )}
         </div>
 
         <a
@@ -81,11 +84,11 @@ import { Icon } from 'astro-icon/components';
             <div class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">
               <Icon name="lucide:message-circle" class="w-5 h-5 text-white" />
             </div>
-            <p class="font-display font-semibold text-brand-900">¿Prefieres WhatsApp?</p>
+            <p class="font-display font-semibold text-brand-900">{contacto.whatsapp.titulo}</p>
           </div>
-          <p class="text-sm text-brand-700 mt-3">
-            También puedes escribirme directamente por ahí, suele ser la vía más rápida.
-          </p>
+          {contacto.whatsapp.texto && (
+            <p class="text-sm text-brand-700 mt-3">{contacto.whatsapp.texto}</p>
+          )}
         </a>
 
       </aside>

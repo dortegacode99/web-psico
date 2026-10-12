@@ -22,22 +22,25 @@ Abre [http://localhost:4321](http://localhost:4321) en el navegador.
 
 ## ¿Qué editar para personalizar la web?
 
-### 1. Datos de contacto y configuración → [src/data/site.ts](src/data/site.ts)
+### 1. Textos y datos de contacto → Pages CMS (sin tocar código)
 
-Es el archivo más importante. Contiene nombre, teléfono, email, WhatsApp, dirección, URL de Calendly y endpoint de Formspree. **Cambiando este archivo se actualiza todo el sitio.**
+Todos los textos de las páginas (portada, Sobre mí, Servicios, FAQ, Contacto) y los datos de
+contacto viven en **[src/data/textos/](src/data/textos/)**, un JSON por página. Jacobo los edita
+desde **[app.pagescms.org](https://app.pagescms.org)** con formularios en español; al guardar,
+Pages CMS hace un commit en GitHub y Vercel vuelve a publicar la web sola (~1 min).
 
-### 2. Servicios, proceso y FAQ → [src/data/content.ts](src/data/content.ts)
+- Los formularios se definen en **[.pages.yml](.pages.yml)**. Pages CMS reescribe cada JSON
+  **solo con los campos de ese esquema**: si añades un campo al JSON, añádelo también allí.
+- [src/data/content.ts](src/data/content.ts) y [src/data/site.ts](src/data/site.ts) leen esos JSON
+  y los dejan listos para los componentes, tolerando campos vacíos: un texto en blanco nunca
+  debe romper el build (si el build falla, el cambio no se publica y nadie sabe por qué).
+- En los campos de texto largo, **una línea en blanco separa párrafos**.
+- Lo técnico sigue en `site.ts` y no se edita desde el CMS: endpoint de Formspree, URL del sitio,
+  imagen para redes.
 
-Lista de servicios (con icono y descripción), pasos del proceso terapéutico y preguntas frecuentes.
-
-### 3. Textos largos de las páginas
-
-Los textos más extensos viven dentro de los archivos `.astro`. Busca los marcadores `[ENTRE CORCHETES]` — son los huecos pendientes de rellenar:
-
-- [src/components/Hero.astro](src/components/Hero.astro) — Slogan principal y números destacados
-- [src/components/AboutSection.astro](src/components/AboutSection.astro) — Bio en home
-- [src/pages/sobre-mi.astro](src/pages/sobre-mi.astro) — Bio extendida, formación, enfoque
-- [src/pages/aviso-legal.astro](src/pages/aviso-legal.astro) — **Importante:** revisar con asesor antes de publicar
+Quedan fuera del editor a propósito: la navegación, las etiquetas del formulario, el 404 y el
+[aviso legal](src/pages/aviso-legal.astro) (**revisar con asesor antes de cambiarlo**; nombre,
+email, teléfono, colegiado y ciudad sí se actualizan solos desde los datos de contacto).
 
 ### 4. Imágenes → [public/images/](public/images/)
 
@@ -75,7 +78,8 @@ La paleta `brand` (verde salvia) y `accent` (amarillo cálido) se cambia en un s
 4. Pégala en `site.ts` → `calendlyUrl`
 
 ### WhatsApp
-En `site.ts`, pon el número en formato internacional **sin `+` ni espacios**:
+En los datos de contacto (Pages CMS o `src/data/textos/datos.json`), el número va en formato
+internacional **sin `+` ni espacios** (el formulario lo valida y `site.ts` lo limpia igualmente):
 - ✅ `34600000000`
 - ❌ `+34 600 000 000`
 
@@ -113,16 +117,16 @@ En `site.ts`, pon el número en formato internacional **sin `+` ni espacios**:
 ```
 src/
 ├── components/      # Piezas reutilizables (Hero, FAQ, ContactForm…)
-├── data/            # Configuración y contenido editable
-│   ├── site.ts      # ⭐ Datos de contacto, URLs, redes
-│   └── content.ts   # ⭐ Servicios, proceso, FAQ
+├── data/
+│   ├── textos/      # ⭐ Un JSON por página: lo que edita Jacobo desde Pages CMS
+│   ├── site.ts      # Datos de contacto (desde textos/datos.json) + ajustes técnicos
+│   └── content.ts   # Lee los JSON de textos/ y los prepara para los componentes
 ├── layouts/
 │   └── BaseLayout.astro   # Plantilla con SEO, header, footer
 ├── pages/           # Cada archivo es una URL
 │   ├── index.astro
 │   ├── sobre-mi.astro
 │   ├── servicios.astro
-│   ├── reserva.astro
 │   ├── contacto.astro
 │   └── aviso-legal.astro
 └── styles/

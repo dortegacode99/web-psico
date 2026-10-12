@@ -16,7 +16,8 @@ interface Props {
 
 const {
   title,
-  description = `${site.tituloProfesional} en ${site.ciudad}. ${site.tagline}.`,
+  // La frase principal la escribe Jacobo: se le quita el punto final si lo pone, para no duplicarlo.
+  description = `${site.tituloProfesional} en ${site.ciudad}. ${site.tagline.replace(/[.\s]+$/, '')}.`,
   image = site.ogImage,
   noindex = false,
   jsonLd = false,

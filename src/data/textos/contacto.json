@@ -1,0 +1,22 @@
+{
+  "cabecera": {
+    "etiqueta": "Contacto",
+    "titulo": "¿Hablamos?",
+    "texto": "Cuéntame brevemente qué te ocurre y te respondo personalmente. Toda consulta es confidencial y sin compromiso."
+  },
+  "formulario": {
+    "titulo": "Escríbeme",
+    "nota": "Te responderé personalmente en menos de 24 horas laborables."
+  },
+  "disponibilidad": {
+    "horario": [
+      "Lunes a viernes · 9:00 – 13:00",
+      "Miércoles · 16:00 – 21:00"
+    ],
+    "modalidad": "Sesiones 100% online."
+  },
+  "whatsapp": {
+    "titulo": "¿Prefieres WhatsApp?",
+    "texto": "También puedes escribirme directamente por ahí, suele ser la vía más rápida."
+  }
+}

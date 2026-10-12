@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site';
+import { contacto } from '../data/content';
 ---
 
 <form
@@ -73,7 +74,7 @@ import { site } from '../data/site';
     Enviar mensaje
   </button>
 
-  <p class="text-xs text-brand-600">
-    Te responderé personalmente en menos de 24 horas laborables.
-  </p>
+  {contacto.formularioNota && (
+    <p class="text-xs text-brand-600">{contacto.formularioNota}</p>
+  )}
 </form>

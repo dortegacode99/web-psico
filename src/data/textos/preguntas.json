@@ -1,0 +1,27 @@
+{
+  "etiqueta": "Preguntas frecuentes",
+  "titulo": "Respuestas a las dudas más comunes",
+  "texto": "¿No encuentras tu pregunta? Escríbeme y te respondo personalmente.",
+  "lista": [
+    {
+      "pregunta": "¿Cuánto dura una sesión y con qué frecuencia se hacen?",
+      "respuesta": "Las sesiones duran 50 minutos. Lo habitual al inicio es una sesión semanal; conforme avanzas se pueden espaciar a quincenales o mensuales hasta el cierre."
+    },
+    {
+      "pregunta": "¿Hay algún compromiso de permanencia?",
+      "respuesta": "No, no hay paquetes cerrados ni permanencia mínima. Cada sesión es independiente y tú decides cuándo continuar, espaciar la frecuencia o cerrar el proceso. Al inicio suele ser útil mantener un ritmo regular para coger continuidad, pero siempre se ajusta a lo que tú necesites en cada momento."
+    },
+    {
+      "pregunta": "¿Cuánto suele durar un proceso terapéutico?",
+      "respuesta": "Depende de cada persona y del motivo de consulta: cada proceso tiene su propio ritmo y no hay una duración estándar. Lo importante es revisar juntos los avances con regularidad para que tengas claridad sobre cómo va el proceso en cada momento."
+    },
+    {
+      "pregunta": "¿La terapia online es igual de efectiva que la presencial?",
+      "respuesta": "Sí. La evidencia científica muestra que para la mayoría de motivos de consulta en adultos los resultados son equivalentes. Además aporta flexibilidad y permite mantener la continuidad si viajas o cambias de ciudad."
+    },
+    {
+      "pregunta": "¿Trabajas con seguros médicos?",
+      "respuesta": "No trabajo directamente con mutuas, pero emito factura privada para que puedas solicitar el reembolso a tu seguro médico si tu póliza lo contempla."
+    }
+  ]
+}

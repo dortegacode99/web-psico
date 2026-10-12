@@ -1,0 +1,17 @@
+{
+  "cabecera": {
+    "titulo": "Terapia online para jóvenes y adultos, un espacio para entenderte y alcanzar tus objetivos",
+    "texto": "Un espacio cálido y seguro donde poder mirar con calma, entender lo que ocurre y construir herramientas para avanzar. Sesiones online, desde donde tú decidas.",
+    "boton": "Contacta conmigo",
+    "destacados": [
+      { "valor": "Online", "texto": "desde cualquier lugar" },
+      { "valor": "50 min", "texto": "por sesión" },
+      { "valor": "100%", "texto": "confidencial" }
+    ]
+  },
+  "llamadaFinal": {
+    "titulo": "¿Quieres dar el primer paso?",
+    "texto": "La primera sesión me sirve para conocernos, entender qué te trae aquí y decidir juntos los siguientes pasos. Sin compromiso.",
+    "boton": "Contacta conmigo"
+  }
+}

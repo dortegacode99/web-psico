@@ -1,0 +1,479 @@
+# Editor de textos de la web de Jacobo — Pages CMS (https://app.pagescms.org)
+#
+# Cada entrada de `content` es un formulario sobre un JSON de src/data/textos/.
+# Al guardar, Pages CMS hace un commit en GitHub y Vercel vuelve a publicar la web sola.
+#
+# ⚠️ Pages CMS reescribe cada JSON SOLO con los campos de este esquema: si añades un campo
+# al JSON, añádelo también aquí (y léelo en src/data/content.ts o site.ts), o se perderá
+# en el siguiente guardado.
+
+settings:
+  commit:
+    templates:
+      update: "Textos: {name} (editado desde Pages CMS)"
+
+components:
+  etiqueta:
+    type: string
+    label: Etiqueta pequeña
+    description: "Texto corto que sale en mayúsculas encima del título. Puede quedar vacío."
+  titulo:
+    type: string
+    label: Título
+    required: true
+  texto:
+    type: text
+    label: Texto
+    description: "Deja una línea en blanco entre párrafo y párrafo."
+  descripcionGoogle:
+    type: text
+    label: Descripción para Google
+    description: "El resumen que sale bajo el título en los resultados de búsqueda. Mejor que no pase de unos 155 caracteres."
+    options:
+      maxlength: 300
+  icono:
+    type: select
+    label: Icono
+    required: true
+    description: "El dibujo de la tarjeta."
+    options:
+      values:
+        - { name: "lucide:sunrise", label: "Amanecer" }
+        - { name: "lucide:anchor", label: "Ancla" }
+        - { name: "lucide:handshake", label: "Apretón de manos" }
+        - { name: "lucide:tree-pine", label: "Árbol" }
+        - { name: "lucide:battery-low", label: "Batería baja" }
+        - { name: "lucide:baby", label: "Bebé" }
+        - { name: "lucide:graduation-cap", label: "Birrete" }
+        - { name: "lucide:message-circle", label: "Bocadillo de conversación" }
+        - { name: "lucide:lightbulb", label: "Bombilla" }
+        - { name: "lucide:sprout", label: "Brote de planta" }
+        - { name: "lucide:compass", label: "Brújula" }
+        - { name: "lucide:calendar-clock", label: "Calendario con reloj" }
+        - { name: "lucide:bed", label: "Cama" }
+        - { name: "lucide:lock", label: "Candado" }
+        - { name: "lucide:smile", label: "Cara sonriente" }
+        - { name: "lucide:house", label: "Casa" }
+        - { name: "lucide:brain", label: "Cerebro" }
+        - { name: "lucide:heart", label: "Corazón" }
+        - { name: "lucide:heart-handshake", label: "Corazón con manos" }
+        - { name: "lucide:heart-crack", label: "Corazón roto" }
+        - { name: "lucide:sparkles", label: "Destellos" }
+        - { name: "lucide:target", label: "Diana" }
+        - { name: "lucide:shield-check", label: "Escudo" }
+        - { name: "lucide:star", label: "Estrella" }
+        - { name: "lucide:flower-2", label: "Flor" }
+        - { name: "lucide:users", label: "Grupo de personas" }
+        - { name: "lucide:leaf", label: "Hoja" }
+        - { name: "lucide:footprints", label: "Huellas" }
+        - { name: "lucide:book-open", label: "Libro abierto" }
+        - { name: "lucide:flame", label: "Llama" }
+        - { name: "lucide:moon", label: "Luna" }
+        - { name: "lucide:briefcase", label: "Maletín" }
+        - { name: "lucide:gamepad-2", label: "Mando de videojuegos" }
+        - { name: "lucide:hand-heart", label: "Mano con corazón" }
+        - { name: "lucide:smartphone", label: "Móvil" }
+        - { name: "lucide:mountain", label: "Montaña" }
+        - { name: "lucide:cloud-rain", label: "Nube con lluvia" }
+        - { name: "lucide:waves", label: "Olas" }
+        - { name: "lucide:ear", label: "Oreja" }
+        - { name: "lucide:user", label: "Persona" }
+        - { name: "lucide:puzzle", label: "Pieza de puzle" }
+        - { name: "lucide:feather", label: "Pluma" }
+        - { name: "lucide:zap", label: "Rayo" }
+        - { name: "lucide:clock", label: "Reloj" }
+        - { name: "lucide:sun", label: "Sol" }
+        - { name: "lucide:cloud-sun", label: "Sol entre nubes" }
+        - { name: "lucide:coffee", label: "Taza de café" }
+        - { name: "lucide:video", label: "Videocámara" }
+        - { name: "lucide:wind", label: "Viento" }
+  redSocial:
+    type: string
+    description: "Pega el enlace completo (https://…). Si lo dejas vacío, no sale."
+    pattern:
+      regex: '^(https://\S+)?$'
+      message: "Tiene que ser un enlace completo que empiece por https://"
+
+content:
+  - name: inicio
+    label: Inicio
+    type: file
+    path: src/data/textos/inicio.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: cabecera
+        label: Portada (lo primero que se ve)
+        type: object
+        fields:
+          - name: titulo
+            label: Frase principal
+            type: text
+            required: true
+            description: "El título grande de la portada. También sale en el pie de todas las páginas y en la descripción de Google."
+          - name: texto
+            component: texto
+            label: Texto debajo de la frase
+          - name: boton
+            label: Texto del botón
+            type: string
+            required: true
+          - name: destacados
+            label: Datos destacados (máximo 3)
+            type: object
+            list:
+              max: 3
+            fields:
+              - name: valor
+                label: Dato en grande
+                type: string
+                required: true
+                description: "Ej.: 50 min"
+              - name: texto
+                label: Texto pequeño debajo
+                type: string
+                description: "Ej.: por sesión"
+      - name: llamadaFinal
+        label: Recuadro final «¿Quieres dar el primer paso?»
+        description: "Sale al final de Inicio, Sobre mí y Servicios."
+        type: object
+        fields:
+          - name: titulo
+            component: titulo
+          - name: texto
+            component: texto
+          - name: boton
+            label: Texto del botón
+            type: string
+            required: true
+
+  - name: sobre-mi
+    label: Sobre mí
+    type: file
+    path: src/data/textos/sobre-mi.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: cabecera
+        label: Cabecera de la página
+        type: object
+        fields:
+          - name: etiqueta
+            component: etiqueta
+          - name: titulo
+            component: titulo
+          - name: texto
+            component: texto
+      - name: presentacion
+        label: Presentación (sale también en la portada)
+        type: object
+        fields:
+          - name: etiqueta
+            component: etiqueta
+          - name: titulo
+            component: titulo
+          - name: texto
+            component: texto
+            description: "Sale aquí y en la portada. Deja una línea en blanco entre párrafo y párrafo."
+          - name: textoAmpliado
+            component: texto
+            label: Texto adicional
+            description: "Solo sale en la página Sobre mí, a continuación del anterior."
+          - name: botonPortada
+            label: Botón de la portada
+            type: string
+            required: true
+            description: "El botón que lleva desde la portada a esta página."
+      - name: valores
+        label: Valores (tarjetas)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titulo}"
+        fields:
+          - name: icono
+            component: icono
+          - name: titulo
+            component: titulo
+          - name: texto
+            label: Texto
+            type: text
+      - name: formacion
+        label: Formación
+        type: object
+        fields:
+          - name: etiqueta
+            component: etiqueta
+          - name: titulo
+            component: titulo
+          - name: lista
+            label: Títulos y estudios
+            type: string
+            list: true
+      - name: enfoque
+        label: Cómo trabajo
+        type: object
+        fields:
+          - name: etiqueta
+            component: etiqueta
+          - name: titulo
+            component: titulo
+          - name: texto
+            component: texto
+      - name: descripcionGoogle
+        component: descripcionGoogle
+
+  - name: servicios
+    label: Servicios
+    type: file
+    path: src/data/textos/servicios.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: cabecera
+        label: Cabecera de la página
+        type: object
+        fields:
+          - name: etiqueta
+            component: etiqueta
+          - name: titulo
+            component: titulo
+          - name: texto
+            component: texto
+      - name: areas
+        label: En qué puedo ayudarte (sale también en la portada)
+        type: object
+        fields:
+          - name: etiqueta
+            component: etiqueta
+          - name: titulo
+            component: titulo
+          - name: texto
+            component: texto
+          - name: lista
+            label: Servicios
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{titulo}"
+            fields:
+              - name: icono
+                component: icono
+              - name: titulo
+                component: titulo
+              - name: descripcion
+                label: Descripción
+                type: text
+      - name: sesiones
+        label: Cómo son las sesiones
+        type: object
+        fields:
+          - name: etiqueta
+            component: etiqueta
+          - name: titulo
+            component: titulo
+          - name: lista
+            label: Tarjetas
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{titulo}"
+            fields:
+              - name: icono
+                component: icono
+              - name: titulo
+                component: titulo
+              - name: texto
+                label: Texto
+                type: text
+      - name: proceso
+        label: El proceso, paso a paso (sale también en la portada)
+        type: object
+        fields:
+          - name: etiqueta
+            component: etiqueta
+          - name: titulo
+            component: titulo
+          - name: texto
+            component: texto
+          - name: pasos
+            label: Pasos
+            description: "Se numeran solos (01, 02, 03…) en el orden de la lista."
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{index}. {titulo}"
+            fields:
+              - name: titulo
+                component: titulo
+              - name: descripcion
+                label: Descripción
+                type: text
+      - name: descripcionGoogle
+        component: descripcionGoogle
+
+  - name: preguntas
+    label: Preguntas frecuentes
+    type: file
+    path: src/data/textos/preguntas.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: etiqueta
+        component: etiqueta
+      - name: titulo
+        component: titulo
+      - name: texto
+        component: texto
+      - name: lista
+        label: Preguntas
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{pregunta}"
+        fields:
+          - name: pregunta
+            label: Pregunta
+            type: string
+            required: true
+          - name: respuesta
+            component: texto
+            label: Respuesta
+
+  - name: contacto
+    label: Contacto
+    type: file
+    path: src/data/textos/contacto.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: cabecera
+        label: Cabecera de la página
+        type: object
+        fields:
+          - name: etiqueta
+            component: etiqueta
+          - name: titulo
+            component: titulo
+          - name: texto
+            component: texto
+      - name: formulario
+        label: Formulario
+        type: object
+        fields:
+          - name: titulo
+            label: Título del recuadro
+            type: string
+            required: true
+          - name: nota
+            label: Nota bajo el botón «Enviar mensaje»
+            type: string
+      - name: disponibilidad
+        label: Disponibilidad
+        type: object
+        fields:
+          - name: horario
+            label: Horario
+            description: "Una línea por franja. Ej.: Lunes a viernes · 9:00 – 13:00"
+            type: string
+            list: true
+          - name: modalidad
+            label: Modalidad
+            type: string
+            description: "Ej.: Sesiones 100% online."
+      - name: whatsapp
+        label: Recuadro de WhatsApp
+        type: object
+        fields:
+          - name: titulo
+            component: titulo
+          - name: texto
+            label: Texto
+            type: text
+
+  - name: datos
+    label: Datos de contacto y perfil
+    type: file
+    path: src/data/textos/datos.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: nombre
+        label: Nombre
+        type: string
+        required: true
+        description: "Sale en la cabecera, en el pie de página y en el aviso legal."
+      - name: tituloProfesional
+        label: Profesión
+        type: string
+        required: true
+        description: "Ej.: Psicólogo online"
+      - name: colegiado
+        label: Nº de colegiado
+        type: string
+        required: true
+      - name: email
+        label: Email
+        type: string
+        required: true
+        description: "Sale en la web y en el aviso legal. Los mensajes del formulario NO cambian de destino al tocar esto: eso se configura aparte (Formspree)."
+        pattern:
+          regex: '^[^@\s]+@[^@\s]+\.[^@\s]+$'
+          message: "Escribe un email válido."
+      - name: telefono
+        label: Teléfono
+        type: string
+        required: true
+        description: "Tal como quieres que se vea. Ej.: +34 618 077 130"
+      - name: whatsapp
+        label: Número de WhatsApp
+        type: string
+        required: true
+        description: "Todo junto, con el 34 delante y sin + ni espacios. Ej.: 34618077130"
+        pattern:
+          regex: '^[0-9]{11,15}$'
+          message: "Solo números, con el 34 delante y sin espacios. Ej.: 34618077130"
+      - name: whatsappMensaje
+        label: Mensaje de WhatsApp
+        type: string
+        description: "El mensaje que aparece ya escrito cuando alguien pulsa el botón de WhatsApp."
+      - name: ciudad
+        label: Ciudad
+        type: string
+        required: true
+      - name: redes
+        label: Redes sociales
+        type: object
+        fields:
+          - name: linkedin
+            component: redSocial
+            label: LinkedIn
+          - name: instagram
+            component: redSocial
+            label: Instagram
+          - name: facebook
+            component: redSocial
+            label: Facebook

@@ -1,0 +1,89 @@
+{
+  "cabecera": {
+    "etiqueta": "Servicios",
+    "titulo": "Áreas de intervención",
+    "texto": "Acompaño a jóvenes y adultos en momentos de malestar, cambio o búsqueda de claridad. Trabajamos juntos para entender qué ocurre y construir herramientas propias."
+  },
+  "areas": {
+    "etiqueta": "Servicios",
+    "titulo": "En qué puedo ayudarte",
+    "texto": "Cada persona y cada momento son distintos. Estos son algunos de los motivos de consulta más frecuentes, aunque la terapia siempre se adapta a lo que tú necesitas.",
+    "lista": [
+      {
+        "icono": "lucide:wind",
+        "titulo": "Ansiedad y estrés",
+        "descripcion": "Ataques de pánico, preocupación constante, tensión física, pensamientos que no paran y/o sensación de peligro."
+      },
+      {
+        "icono": "lucide:cloud-rain",
+        "titulo": "Depresión y bajo estado de ánimo",
+        "descripcion": "Tristeza prolongada, falta de energía, desmotivación, sensación de vacío y/o alteraciones del sueño (dormir demasiado o muy poco)."
+      },
+      {
+        "icono": "lucide:sparkles",
+        "titulo": "Autoestima y crecimiento personal",
+        "descripcion": "Inseguridad, autoexigencia, dificultad para poner límites o miedo a decepcionar. Construir una relación más amable contigo mismo."
+      },
+      {
+        "icono": "lucide:heart-crack",
+        "titulo": "Duelo y pérdidas",
+        "descripcion": "Acompañamiento ante la muerte de un ser querido, una ruptura, cambios laborales o cualquier pérdida que cuesta integrar."
+      },
+      {
+        "icono": "lucide:users",
+        "titulo": "Relaciones familiares y de pareja",
+        "descripcion": "Conflictos de pareja, dependencia emocional, dificultades para confiar o patrones que se repiten en tus relaciones."
+      },
+      {
+        "icono": "lucide:briefcase",
+        "titulo": "Estrés laboral y burnout",
+        "descripcion": "Saturación, presión, agotamiento, sensación de no llegar, dificultad para desconectar fuera del trabajo y/o desmotivación constante."
+      }
+    ]
+  },
+  "sesiones": {
+    "etiqueta": "Cómo trabajo",
+    "titulo": "Cómo son las sesiones",
+    "lista": [
+      {
+        "icono": "lucide:video",
+        "titulo": "Sesiones online",
+        "texto": "Todas las sesiones se hacen por videollamada en una plataforma segura conforme al RGPD. Solo necesitas un dispositivo con cámara y un espacio tranquilo donde poder hablar."
+      },
+      {
+        "icono": "lucide:calendar-clock",
+        "titulo": "Flexibilidad horaria",
+        "texto": "Horarios compatibles con jornada laboral. Reservas en el calendario online y, si surge algo, los reprogramamos sin coste con 24 h de antelación."
+      },
+      {
+        "icono": "lucide:lock",
+        "titulo": "Confidencialidad total",
+        "texto": "Lo tratado en sesión está protegido por el secreto profesional. Cumplimiento estricto del RGPD y de la normativa deontológica del Colegio Oficial de Psicología."
+      }
+    ]
+  },
+  "proceso": {
+    "etiqueta": "Cómo funciona",
+    "titulo": "El proceso, paso a paso",
+    "texto": "Empezar terapia puede generar dudas. Por eso el camino es claro y lo construimos juntos desde el primer momento.",
+    "pasos": [
+      {
+        "titulo": "Primer contacto",
+        "descripcion": "Me escribes por formulario, WhatsApp o teléfono. Respondo en menos de 24 h laborables y resolvemos las dudas iniciales."
+      },
+      {
+        "titulo": "Sesión inicial",
+        "descripcion": "Una primera sesión online de 50 minutos donde me cuentas qué te ocurre y vemos juntos si encajamos para trabajar."
+      },
+      {
+        "titulo": "Proceso terapéutico",
+        "descripcion": "Sesiones regulares (habitualmente semanales) con objetivos claros. Vamos revisando avances y ajustando el ritmo según lo que necesites."
+      },
+      {
+        "titulo": "Cierre y autonomía",
+        "descripcion": "Cuando los objetivos se alcanzan, espaciamos las sesiones progresivamente hasta el alta. Siempre con la puerta abierta."
+      }
+    ]
+  },
+  "descripcionGoogle": "Áreas de intervención: ansiedad, depresión, autoestima, duelo, relaciones, estrés laboral. Terapia online para jóvenes y adultos."
+}

@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { llamadaFinal } from '../data/content';
 ---
 
 <section class="section">
@@ -10,16 +11,13 @@ import { Icon } from 'astro-icon/components';
 
       <div class="relative">
         <h2 class="text-3xl sm:text-4xl font-display font-semibold">
-          ¿Quieres dar el primer paso?
+          {llamadaFinal.titulo}
         </h2>
-        <p class="mt-4 max-w-xl mx-auto text-cream-100">
-          La primera sesión me sirve para conocernos, entender qué te trae aquí y decidir
-          juntos los siguientes pasos. Sin compromiso.
-        </p>
+        {llamadaFinal.parrafos.map((p) => <p class="mt-4 max-w-xl mx-auto text-cream-100">{p}</p>)}
         <div class="mt-8 flex flex-wrap justify-center gap-3">
           <a href="/contacto" class="btn-accent">
             <Icon name="lucide:mail" class="w-4 h-4" />
-            Contacta conmigo
+            {llamadaFinal.boton}
           </a>
         </div>
       </div>

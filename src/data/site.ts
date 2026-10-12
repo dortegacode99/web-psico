@@ -1,48 +1,53 @@
 /**
  * CONFIGURACIÓN CENTRAL DEL SITIO
  *
- * Edita aquí los datos reales cuando los tengas.
- * Todo el sitio lee desde este archivo, no necesitas tocar nada más
- * salvo los textos largos que están en cada página.
+ * Los datos de perfil y contacto viven en src/data/textos/datos.json y Jacobo los edita
+ * desde Pages CMS (formularios en .pages.yml, raíz del repo). Aquí se leen y se completan
+ * con los ajustes técnicos, que NO se tocan desde el editor.
  */
+import datos from './textos/datos.json';
+import inicio from './textos/inicio.json';
+import { limpio } from './content';
 
 export const site = {
-  // --- Identidad ---
-  nombre: 'Jacobo Chamorro',
-  tituloProfesional: 'Psicólogo online',
-  colegiado: 'M-40114',
-  tagline: 'Terapia online para jóvenes y adultos, un espacio para entenderte y alcanzar tus objetivos',
+  // --- Identidad (editable: Pages CMS → "Datos de contacto y perfil") ---
+  nombre: limpio(datos.nombre),
+  tituloProfesional: limpio(datos.tituloProfesional),
+  colegiado: limpio(datos.colegiado),
+  // Frase principal de la portada (editable: Pages CMS → "Inicio")
+  tagline: limpio(inicio.cabecera?.titulo),
 
-  // --- Contacto ---
-  email: 'jacobo.chamorro.ticpg@gmail.com',
-  telefono: '+34 618 077 130',
-  // Número internacional sin "+" ni espacios para wa.me (ej: 34600000000)
-  whatsapp: '34618077130',
-  whatsappMensaje: 'Hola, me gustaría informarme sobre la primera sesión.',
+  // --- Contacto (editable) ---
+  email: limpio(datos.email),
+  telefono: limpio(datos.telefono),
+  // Número internacional sin "+" ni espacios para wa.me (ej: 34600000000).
+  // Se dejan solo los dígitos por si alguien lo escribe con "+" o espacios.
+  whatsapp: (datos.whatsapp ?? '').replace(/\D/g, ''),
+  whatsappMensaje: limpio(datos.whatsappMensaje),
 
   // --- Ubicación ---
   // Aunque la atención es online, el aviso legal requiere una dirección a efectos de
   // notificaciones (puede ser personal o un apartado postal).
   direccion: '',
-  ciudad: 'Madrid',
+  ciudad: limpio(datos.ciudad),
   pais: 'España',
 
   // --- URLs externas ---
   // Pega aquí el endpoint de Formspree (ej: https://formspree.io/f/xxxxxxx)
   formspreeEndpoint: 'https://formspree.io/f/xzdwvdej',
 
-  // --- Redes sociales (deja '' para ocultar el icono) ---
+  // --- Redes sociales (editable; vacío = no sale el icono) ---
   redes: {
-    instagram: '',
-    linkedin: 'https://www.linkedin.com/in/jchamval/',
-    facebook: '',
+    instagram: limpio(datos.redes?.instagram),
+    linkedin: limpio(datos.redes?.linkedin),
+    facebook: limpio(datos.redes?.facebook),
   },
 
   // --- SEO ---
   // Cuando despliegues, cambia esto por tu dominio real (sin barra final)
   url: 'https://jacobochamorro.vercel.app',
   ogImage: '/images/og-image.jpg',
-} as const;
+};
 
 export type SiteConfig = typeof site;
 
