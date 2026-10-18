@@ -8,7 +8,7 @@ interface Props {
   compact?: boolean;
   /** Fondo blanco en vez del crema de la página. */
   fondoBlanco?: boolean;
-  /** Sin margen de arriba en ordenador: la sección anterior tiene el mismo fondo. */
+  /** Sin margen de arriba: la sección anterior tiene el mismo fondo (si no, se suman los dos). */
   pegada?: boolean;
 }
 const { compact = false, fondoBlanco = false, pegada = false } = Astro.props;
@@ -25,7 +25,7 @@ const imagen = compact
   : { src: '/images/jacobo-chamorro.jpg', alt: `Retrato de ${site.nombre}` };
 ---
 
-<section class:list={['section', fondoBlanco && 'bg-white', pegada && 'lg:pt-0']}>
+<section class:list={['section', fondoBlanco && 'bg-white', pegada && '!pt-0']}>
   <div class="container-prose grid lg:grid-cols-12 gap-12 items-center">
     <div class="lg:col-span-5 order-2 lg:order-1">
       <div class="aspect-[3/4] rounded-3xl shadow-soft overflow-hidden">

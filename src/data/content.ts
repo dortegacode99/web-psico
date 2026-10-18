@@ -82,6 +82,7 @@ export const presentacion = {
 
 export const sobreMi = {
   cabecera: seccion(sobreMiJson.cabecera),
+  valoresTitulo: limpio(sobreMiJson.valoresTitulo),
   valores: sinVacios(sobreMiJson.valores, (v) => v.titulo).map((v) => ({
     icono: icono(v.icono),
     titulo: limpio(v.titulo),

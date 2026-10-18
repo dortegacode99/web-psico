@@ -56,7 +56,7 @@
         {
           "icono": "lucide:moon",
           "titulo": "Sueño",
-          "descripcion": "Dificultades para conciliar el sueño o al despertarse en medio de la noche, no ser capaz de dormir de manera autónoma y miedos asociados a este momento."
+          "descripcion": "Dificultad para conciliar el sueño, despertares en medio de la noche, no ser capaz de dormir de manera autónoma y miedos asociados a este momento."
         },
         {
           "icono": "lucide:users",
@@ -91,7 +91,7 @@
         {
           "icono": "lucide:hand-heart",
           "titulo": "Asesoramiento a padres",
-          "descripcion": "Acompañamiento y recomendación de herramientas a seguir en función de las dificultades encontradas en los hijos."
+          "descripcion": "Acompañamiento y recomendación de pautas y herramientas en función de las dificultades encontradas en los hijos."
         }
       ]
     }
@@ -113,7 +113,7 @@
       {
         "icono": "lucide:lock",
         "titulo": "Confidencialidad total",
-        "texto": "Lo tratado en sesión está protegido por el secreto profesional. Cumplimiento estricto del RGPD y de la normativa deontológica del Colegio Oficial de Psicología."
+        "texto": "Lo tratado en sesión está protegido por el secreto profesional. Cumplimiento estricto del RGPD y de la normativa deontológica del Colegio Oficial de la Psicología de Madrid."
       }
     ]
   },

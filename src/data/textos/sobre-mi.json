@@ -2,7 +2,7 @@
   "cabecera": {
     "etiqueta": "Sobre mí",
     "titulo": "Una mirada cercana, profesional y siempre de tu lado",
-    "texto": "Soy Jacobo Chamorro, psicólogo general sanitario colegiado en Madrid. Trabajo con niños, adolescentes y adultos, de forma presencial y online, desde el respeto a su historia, combinando escucha cálida y herramientas prácticas para que no solo te sientas comprendido, sino que avances en lo que de verdad te importa."
+    "texto": "Soy Jacobo Chamorro, psicólogo general sanitario colegiado en Madrid. Trabajo con niños, adolescentes y adultos, de forma presencial y online, desde el respeto a la historia de cada persona, combinando escucha cálida y herramientas prácticas para que no solo te sientas comprendido, sino que avances en lo que de verdad te importa."
   },
   "presentacion": {
     "etiqueta": "Sobre mí",
@@ -11,6 +11,7 @@
     "textoAmpliado": "Como psicólogo, mi enfoque es ayudar a que la persona, el niño o la familia no solo se sientan comprendidos, sino que **avancen en las cosas que les resultan importantes**. Los modelos principales que empleo para ello son las terapias de tercera generación y la terapia cognitivo-conductual, junto con algunas técnicas de la terapia familiar sistémica, **adaptando el modelo y la forma de trabajar** a las dificultades y preferencias de cada caso.",
     "botonPortada": "Saber más sobre mí"
   },
+  "valoresTitulo": "Lo que puedes esperar",
   "valores": [
     {
       "icono": "lucide:heart",

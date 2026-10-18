@@ -47,7 +47,8 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
-      <Icon name="lucide:menu" class="w-6 h-6" />
+      <Icon name="lucide:menu" class="w-6 h-6" data-icono-abrir />
+      <Icon name="lucide:x" class="w-6 h-6 hidden" data-icono-cerrar />
     </button>
   </div>
 
@@ -57,14 +58,13 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
         <a
           href={item.href}
           class:list={[
-            'px-3 py-2 rounded-lg text-sm',
+            'px-3 py-3 rounded-lg text-base',
             path === item.href ? 'bg-brand-100 text-brand-700' : 'text-brand-800 hover:bg-brand-50',
           ]}
         >
           {item.label}
         </a>
       ))}
-      <a href="/contacto" class="btn-primary mt-2 self-start">Contacta conmigo</a>
     </nav>
   </div>
 </header>
@@ -75,5 +75,8 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
   btn?.addEventListener('click', () => {
     const open = menu?.classList.toggle('hidden') === false;
     btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    btn.querySelector('[data-icono-abrir]')?.classList.toggle('hidden', open);
+    btn.querySelector('[data-icono-cerrar]')?.classList.toggle('hidden', !open);
   });
 </script>

@@ -2,13 +2,13 @@
 import { proceso } from '../data/content';
 
 interface Props {
-  /** Sin margen de arriba en ordenador: la sección anterior tiene el mismo fondo. */
+  /** Sin margen de arriba: la sección anterior tiene el mismo fondo (si no, se suman los dos). */
   pegada?: boolean;
 }
 const { pegada = false } = Astro.props;
 ---
 
-<section class:list={['section', pegada && 'lg:pt-0']}>
+<section class:list={['section', pegada && '!pt-0']}>
   <div class="container-prose">
     <div>
       {proceso.etiqueta && <span class="eyebrow">{proceso.etiqueta}</span>}
