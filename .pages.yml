@@ -72,6 +72,7 @@ components:
         - { name: "lucide:briefcase", label: "Maletín" }
         - { name: "lucide:gamepad-2", label: "Mando de videojuegos" }
         - { name: "lucide:hand-heart", label: "Mano con corazón" }
+        - { name: "lucide:map-pin", label: "Marcador de mapa" }
         - { name: "lucide:smartphone", label: "Móvil" }
         - { name: "lucide:mountain", label: "Montaña" }
         - { name: "lucide:cloud-rain", label: "Nube con lluvia" }
@@ -400,7 +401,7 @@ content:
           - name: modalidad
             label: Modalidad
             type: string
-            description: "Ej.: Sesiones 100% online."
+            description: "Ej.: Sesiones online y presenciales."
       - name: whatsapp
         label: Recuadro de WhatsApp
         type: object
@@ -430,7 +431,7 @@ content:
         label: Profesión
         type: string
         required: true
-        description: "Ej.: Psicólogo online"
+        description: "Ej.: Psicólogo online y presencial"
       - name: colegiado
         label: Nº de colegiado
         type: string

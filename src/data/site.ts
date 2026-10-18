@@ -26,8 +26,8 @@ export const site = {
   whatsappMensaje: limpio(datos.whatsappMensaje),
 
   // --- Ubicación ---
-  // Aunque la atención es online, el aviso legal requiere una dirección a efectos de
-  // notificaciones (puede ser personal o un apartado postal).
+  // Dirección para el aviso legal a efectos de notificaciones (puede ser personal o un
+  // apartado postal).
   direccion: '',
   ciudad: limpio(datos.ciudad),
   pais: 'España',

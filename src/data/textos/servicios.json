@@ -2,7 +2,7 @@
   "cabecera": {
     "etiqueta": "Servicios",
     "titulo": "Áreas de intervención",
-    "texto": "Acompaño a jóvenes y adultos en momentos de malestar, cambio o búsqueda de claridad. Trabajamos juntos para entender qué ocurre y construir herramientas propias."
+    "texto": "Acompaño a niños, adolescentes y adultos en momentos de malestar, cambio o búsqueda de claridad. Trabajamos juntos para entender qué ocurre y construir herramientas propias."
   },
   "areas": {
     "etiqueta": "Servicios",
@@ -46,9 +46,9 @@
     "titulo": "Cómo son las sesiones",
     "lista": [
       {
-        "icono": "lucide:video",
-        "titulo": "Sesiones online",
-        "texto": "Todas las sesiones se hacen por videollamada en una plataforma segura conforme al RGPD. Solo necesitas un dispositivo con cámara y un espacio tranquilo donde poder hablar."
+        "icono": "lucide:map-pin",
+        "titulo": "Online o presencial",
+        "texto": "Puedes venir a consulta o hacer la sesión por videollamada, en una plataforma segura conforme al RGPD. Para la videollamada solo necesitas un dispositivo con cámara y un espacio tranquilo donde poder hablar."
       },
       {
         "icono": "lucide:calendar-clock",
@@ -73,7 +73,7 @@
       },
       {
         "titulo": "Sesión inicial",
-        "descripcion": "Una primera sesión online de 50 minutos donde me cuentas qué te ocurre y vemos juntos si encajamos para trabajar."
+        "descripcion": "Una primera sesión de 50 minutos, online o presencial, donde me cuentas qué te ocurre y vemos juntos si encajamos para trabajar."
       },
       {
         "titulo": "Proceso terapéutico",
@@ -85,5 +85,5 @@
       }
     ]
   },
-  "descripcionGoogle": "Áreas de intervención: ansiedad, depresión, autoestima, duelo, relaciones, estrés laboral. Terapia online para jóvenes y adultos."
+  "descripcionGoogle": "Áreas de intervención: ansiedad, depresión, autoestima, duelo, relaciones, estrés laboral. Terapia online y presencial para niños, adolescentes y adultos."
 }
