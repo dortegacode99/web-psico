@@ -9,7 +9,7 @@
           "value": "jacobochamorro.vercel.app"
         }
       ],
-      "destination": "https://jacobochamorro.es/:path*",
+      "destination": "https://jacobochamorro-psicologia.es/:path*",
       "permanent": true
     },
     {
@@ -20,7 +20,7 @@
           "value": "web-psico-eight.vercel.app"
         }
       ],
-      "destination": "https://jacobochamorro.es/:path*",
+      "destination": "https://jacobochamorro-psicologia.es/:path*",
       "permanent": true
     }
   ]

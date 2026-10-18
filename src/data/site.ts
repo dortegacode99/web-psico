@@ -46,7 +46,7 @@ export const site = {
   // --- SEO ---
   // Dominio de la web (sin barra final). Si cambia, cámbialo también en astro.config.mjs,
   // public/robots.txt y vercel.json (la redirección desde la dirección vieja de Vercel).
-  url: 'https://jacobochamorro.es',
+  url: 'https://jacobochamorro-psicologia.es',
   ogImage: '/images/og-image.jpg',
 };
 

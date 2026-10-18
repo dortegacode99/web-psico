@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  site: 'https://jacobochamorro.es',
+  site: 'https://jacobochamorro-psicologia.es',
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap(),
