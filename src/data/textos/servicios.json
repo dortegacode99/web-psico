@@ -103,12 +103,12 @@
       {
         "icono": "lucide:map-pin",
         "titulo": "Online o presencial",
-        "texto": "Puedes venir a consulta o hacer la sesión por videollamada, en una plataforma segura conforme al RGPD. Para la videollamada solo necesitas un dispositivo con cámara y un espacio tranquilo donde poder hablar."
+        "texto": "Puedes venir a la consulta de Majadahonda o hacer la sesión por videollamada, en una plataforma segura conforme al RGPD. Para la videollamada solo necesitas un dispositivo con cámara y un espacio tranquilo donde poder hablar."
       },
       {
         "icono": "lucide:calendar-clock",
-        "titulo": "Flexibilidad horaria",
-        "texto": "Horarios compatibles con jornada laboral. Reservas en el calendario online y, si surge algo, los reprogramamos sin coste con 24 h de antelación."
+        "titulo": "Horario",
+        "texto": "Online, de lunes a viernes de 9:00 a 13:00. Presencial, los miércoles de 15:00 a 21:00 en Majadahonda. Si surge algo, reprogramamos la sesión sin coste avisando con 24 h de antelación."
       },
       {
         "icono": "lucide:lock",

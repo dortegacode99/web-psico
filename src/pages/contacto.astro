@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
-import { site, telLink, mailtoLink, whatsappUrl } from '../data/site';
+import { site, telLink, mailtoLink, whatsappUrl, mapaUrl } from '../data/site';
 import { contacto } from '../data/content';
 import { Icon } from 'astro-icon/components';
 
@@ -66,10 +66,16 @@ const { cabecera } = contacto;
               </span>
             </p>
           )}
-          {contacto.modalidad && (
+          {(contacto.modalidad || site.direccion) && (
             <p class="mt-3 text-sm text-brand-700 flex gap-3">
               <Icon name="lucide:map-pin" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" />
-              <span>{contacto.modalidad}</span>
+              <span>
+                {contacto.modalidad}
+                {contacto.modalidad && site.direccion && <br />}
+                {site.direccion && (
+                  <a href={mapaUrl} target="_blank" rel="noopener" class="underline text-brand-800 hover:text-brand-900">{site.direccion}</a>
+                )}
+              </span>
             </p>
           )}
         </div>
