@@ -51,12 +51,12 @@
         {
           "icono": "lucide:flame",
           "titulo": "Rabietas",
-          "descripcion": "Enfados a la hora de no conseguir lo que piden, dificultad en el establecimiento de rutinas y complicaciones a la hora de hacer tareas."
+          "descripcion": "Enfados al no conseguir lo que piden, dificultad en el establecimiento de rutinas y complicaciones a la hora de hacer tareas."
         },
         {
           "icono": "lucide:moon",
           "titulo": "Sueño",
-          "descripcion": "Dificultades a la hora de conciliar el sueño, a la hora de despertarse en medio de la noche, no ser capaz de dormir de manera autónoma y miedos asociados a este momento."
+          "descripcion": "Dificultades para conciliar el sueño o al despertarse en medio de la noche, no ser capaz de dormir de manera autónoma y miedos asociados a este momento."
         },
         {
           "icono": "lucide:users",
