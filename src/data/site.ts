@@ -44,8 +44,9 @@ export const site = {
   },
 
   // --- SEO ---
-  // Cuando despliegues, cambia esto por tu dominio real (sin barra final)
-  url: 'https://jacobochamorro.vercel.app',
+  // Dominio de la web (sin barra final). Si cambia, cámbialo también en astro.config.mjs,
+  // public/robots.txt y vercel.json (la redirección desde la dirección vieja de Vercel).
+  url: 'https://jacobochamorro.es',
   ogImage: '/images/og-image.jpg',
 };
 
