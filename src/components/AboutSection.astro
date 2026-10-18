@@ -5,14 +5,16 @@ import { presentacion } from '../data/content';
 interface Props {
   /** Si true, renderiza versión resumida con CTA a /sobre-mi (para home). */
   compact?: boolean;
+  /** Fondo blanco en vez del crema de la página. */
+  fondoBlanco?: boolean;
 }
-const { compact = false } = Astro.props;
+const { compact = false, fondoBlanco = false } = Astro.props;
 const parrafos = compact
   ? presentacion.parrafos
   : [...presentacion.parrafos, ...presentacion.ampliacion];
 ---
 
-<section class="section">
+<section class:list={['section', fondoBlanco && 'bg-white']}>
   <div class="container-prose grid lg:grid-cols-12 gap-12 items-center">
     <div class="lg:col-span-5 order-2 lg:order-1">
       <div class="aspect-[3/4] rounded-3xl shadow-soft overflow-hidden">

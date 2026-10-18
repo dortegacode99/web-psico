@@ -6,12 +6,15 @@ import ServicesGrid from '../components/ServicesGrid.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import FAQ from '../components/FAQ.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+
+// Los fondos de las secciones alternan crema / blanco. Si cambias el orden, ajusta
+// fondoBlanco para que no queden dos del mismo color seguidas.
 ---
 
 <BaseLayout jsonLd>
   <Hero />
-  <AboutSection compact />
-  <ServicesGrid />
+  <ServicesGrid fondoBlanco={false} />
+  <AboutSection compact fondoBlanco />
   <ProcessSteps />
   <FAQ />
   <CtaBanner />

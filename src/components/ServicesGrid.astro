@@ -1,9 +1,15 @@
 ---
 import { servicios } from '../data/content';
 import ServiceCard from './ServiceCard.astro';
+
+interface Props {
+  /** Fondo blanco (por defecto); sin él, la sección toma el crema de la página. */
+  fondoBlanco?: boolean;
+}
+const { fondoBlanco = true } = Astro.props;
 ---
 
-<section class="section bg-white">
+<section class:list={['section', fondoBlanco && 'bg-white']}>
   <div class="container-prose">
     <div class="max-w-2xl">
       {servicios.etiqueta && <span class="eyebrow">{servicios.etiqueta}</span>}
