@@ -70,6 +70,8 @@ const tonos = {
   /**
    * Todas las tarjetas de una pestaña miden siempre lo mismo. Cerradas, lo que pide el nombre
    * más largo; si hay alguna abierta, crecen todas a la vez hasta lo que pida su descripción.
+   * En móvil (una por fila) no hay tarjetas al lado, así que solo crece la que se abre: si
+   * crecieran todas, la página daría un salto enorme.
    * Con `medir` se recalcula el alto cerradas (al cargar, al cambiar el ancho o de pestaña).
    */
   const ajustar = (rejilla: HTMLElement, medir = false) => {
@@ -82,8 +84,13 @@ const tonos = {
         Math.max(...interiores.map((i) => i.querySelector<HTMLElement>('.tarjeta-cara-delante')!.offsetHeight)),
       );
     }
-    const alto = Math.max(Number(rejilla.dataset.altoCerradas), ...interiores.filter(abierta).map(altoDetras));
-    interiores.forEach((i) => (i.style.height = `${alto}px`));
+    const cerradas = Number(rejilla.dataset.altoCerradas);
+    if (getComputedStyle(rejilla).gridTemplateColumns.split(' ').length === 1) {
+      interiores.forEach((i) => (i.style.height = `${abierta(i) ? Math.max(cerradas, altoDetras(i)) : cerradas}px`));
+    } else {
+      const alto = Math.max(cerradas, ...interiores.filter(abierta).map(altoDetras));
+      interiores.forEach((i) => (i.style.height = `${alto}px`));
+    }
     if (medir) {
       void rejilla.offsetHeight;
       rejilla.classList.remove('sin-transicion');

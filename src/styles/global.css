@@ -58,7 +58,7 @@
   }
 
   .volteo-on .servicios-tarjetas {
-    @apply grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 items-start;
+    @apply grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 items-start;
   }
   .volteo-on .tarjeta-volteo {
     @apply bg-transparent p-0 border-0 rounded-none shadow-none;
@@ -83,7 +83,7 @@
     -webkit-backface-visibility: hidden;
   }
   .volteo-on .tarjeta-cara-delante {
-    @apply relative h-full pr-10 sm:pr-12 bg-white border-brand-100 transition-[border-color,box-shadow];
+    @apply relative flex h-full items-center gap-4 pr-12 sm:block sm:pr-12 bg-white border-brand-100 transition-[border-color,box-shadow];
   }
   .volteo-on .tarjeta-interior:hover .tarjeta-cara-delante {
     @apply shadow-soft border-brand-300;
@@ -98,11 +98,17 @@
   .volteo-on [data-tono='accent'] .tarjeta-cara-detras {
     @apply bg-accent-50 border-accent-200;
   }
+  .volteo-on .tarjeta-cara-detras .tarjeta-pista {
+    @apply top-4 translate-y-0;
+  }
+  .volteo-on .tarjeta-cara-delante h3 {
+    @apply mt-0 sm:mt-5;
+  }
   .volteo-on .tarjeta-titulo-detras {
     @apply block mb-2;
   }
   .volteo-on .tarjeta-pista {
-    @apply absolute top-4 right-4 flex w-7 h-7 items-center justify-center rounded-full;
+    @apply absolute top-1/2 -translate-y-1/2 right-4 sm:top-4 sm:translate-y-0 flex w-7 h-7 items-center justify-center rounded-full;
   }
 
   /* Servicios: al cambiar de pestaña las tarjetas entran en cascada (--i = su posición). */
