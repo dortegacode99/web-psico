@@ -65,23 +65,23 @@
   "proceso": {
     "etiqueta": "Cómo funciona",
     "titulo": "El proceso, paso a paso",
-    "texto": "Empezar terapia puede generar dudas. Por eso el camino es claro y lo construimos juntos desde el primer momento.",
+    "texto": "Empezar terapia, o buscar ayuda para un hijo o una hija, puede generar dudas. Por eso el camino es claro y lo construimos juntos desde el primer momento.",
     "pasos": [
       {
         "titulo": "Primer contacto",
-        "descripcion": "Me escribes por formulario, WhatsApp o teléfono. Respondo en menos de 24 h laborables y resolvemos las dudas iniciales."
+        "descripcion": "Por formulario, WhatsApp o teléfono, tanto si la terapia es para ti como para tu hijo o hija. Respondo en menos de 24 h laborables y resolvemos las primeras dudas."
       },
       {
         "titulo": "Sesión inicial",
-        "descripcion": "Una primera sesión de 50 minutos, online o presencial, donde me cuentas qué te ocurre y vemos juntos si encajamos para trabajar."
+        "descripcion": "Una primera sesión de 50 minutos, online o presencial, para entender qué ocurre y ver si encajamos para trabajar. Si la terapia es para un niño o adolescente, empiezo hablando con los padres."
       },
       {
         "titulo": "Proceso terapéutico",
-        "descripcion": "Sesiones regulares (habitualmente semanales) con objetivos claros. Vamos revisando avances y ajustando el ritmo según lo que necesites."
+        "descripcion": "Sesiones regulares, habitualmente semanales, con objetivos claros. Se revisan los avances y se ajusta el ritmo; con niños y adolescentes, contando también con la familia."
       },
       {
         "titulo": "Cierre y autonomía",
-        "descripcion": "Cuando los objetivos se alcanzan, espaciamos las sesiones progresivamente hasta el alta. Siempre con la puerta abierta."
+        "descripcion": "Cuando se alcanzan los objetivos, las sesiones se espacian poco a poco hasta el alta. Siempre con la puerta abierta."
       }
     ]
   },
