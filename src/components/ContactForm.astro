@@ -1,9 +1,17 @@
 ---
-import { site } from '../data/site';
+import { site, whatsappUrl } from '../data/site';
+import { Icon } from 'astro-icon/components';
 import { contacto } from '../data/content';
 ---
 
+<!--
+  Se envía a Formspree sin salir de la web (fetch con Accept: application/json, incluido en su
+  plan gratis) y se enseña nuestro propio "gracias". Si ese envío falla por algo que no sea un
+  dato mal escrito, se reenvía de la forma clásica (con salto a la página de Formspree), para
+  que nunca se pierda un mensaje. Sin JavaScript funciona igual que siempre.
+-->
 <form
+  id="formulario-contacto"
   action={site.formspreeEndpoint}
   method="POST"
   class="space-y-5"
@@ -70,11 +78,91 @@ import { contacto } from '../data/content';
   <!-- Honeypot anti-spam (Formspree lo respeta) -->
   <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
 
-  <button type="submit" class="btn-primary w-full sm:w-auto">
-    Enviar mensaje
+  <button type="submit" class="btn-primary w-full sm:w-auto disabled:opacity-60 disabled:cursor-wait">
+    <span data-texto-boton>Enviar mensaje</span>
   </button>
+
+  <p data-error role="alert" class="hidden rounded-2xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-800"></p>
 
   {contacto.formularioNota && (
     <p class="text-xs text-brand-600">{contacto.formularioNota}</p>
   )}
 </form>
+
+<div id="contacto-enviado" class="hidden text-center py-6" role="status" aria-live="polite">
+  <div class="mx-auto w-16 h-16 rounded-full bg-brand-100 flex items-center justify-center">
+    <Icon name="lucide:check" class="w-8 h-8 text-brand-600" />
+  </div>
+  <h3 tabindex="-1" class="mt-5 font-display font-semibold text-2xl text-brand-900">¡Mensaje enviado!</h3>
+  <p class="mt-3 text-brand-700">
+    Gracias por escribirme<span data-nombre></span>. {contacto.formularioNota || 'Te responderé personalmente lo antes posible.'}
+  </p>
+  <p class="mt-6 text-sm text-brand-600">
+    ¿Es urgente? También puedes escribirme por
+    <a href={whatsappUrl} target="_blank" rel="noopener" class="underline text-brand-700 hover:text-brand-900">WhatsApp</a>.
+  </p>
+</div>
+
+<script>
+  const form = document.getElementById('formulario-contacto') as HTMLFormElement | null;
+  const enviado = document.getElementById('contacto-enviado');
+  if (form && enviado && window.fetch) {
+    const boton = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const textoBoton = form.querySelector<HTMLElement>('[data-texto-boton]')!;
+    const error = form.querySelector<HTMLElement>('[data-error]')!;
+    let clasico = false;
+    const MARCA = 'contacto-enviado'; // envío clásico en curso (sessionStorage)
+
+    // Al volver con "atrás" después de enviar, el navegador rellena otra vez el formulario: si
+    // ya se envió, se vacía. Si no se envió (p. ej. fue a mirar el aviso legal), se respeta.
+    window.addEventListener('pageshow', () => {
+      try {
+        if (sessionStorage.getItem(MARCA)) {
+          sessionStorage.removeItem(MARCA);
+          form.reset();
+        }
+      } catch {}
+    });
+
+    form.addEventListener('submit', async (e) => {
+      if (clasico) return; // reenvío de la forma de siempre: que siga su curso
+      e.preventDefault();
+      error.classList.add('hidden');
+      boton.disabled = true;
+      textoBoton.textContent = 'Enviando…';
+      const datos = new FormData(form);
+      try {
+        const r = await fetch(form.action, { method: 'POST', body: datos, headers: { Accept: 'application/json' } });
+        if (r.ok) {
+          const nombre = String(datos.get('nombre') ?? '').trim().split(/\s+/)[0];
+          enviado.querySelector('[data-nombre]')!.textContent = nombre ? `, ${nombre}` : '';
+          form.reset();
+          form.classList.add('hidden');
+          enviado.classList.remove('hidden');
+          enviado.querySelector<HTMLElement>('h3')!.focus();
+          return;
+        }
+        // 422 = algún dato que Formspree no acepta (p. ej. el email): se avisa y se deja corregir.
+        if (r.status === 422) {
+          const cuerpo = await r.json().catch(() => ({}));
+          const campos = (cuerpo.errors ?? []).map((x: { field?: string }) => x.field);
+          error.textContent = campos.includes('email')
+            ? 'Revisa el email: parece que no está bien escrito.'
+            : 'Revisa los campos del formulario e inténtalo de nuevo.';
+          error.classList.remove('hidden');
+          boton.disabled = false;
+          textoBoton.textContent = 'Enviar mensaje';
+          return;
+        }
+        throw new Error(`Formspree respondió ${r.status}`);
+      } catch {
+        // Cualquier otro fallo (red, captcha de Formspree…): envío clásico, que no se pierda.
+        clasico = true;
+        try {
+          sessionStorage.setItem(MARCA, '1');
+        } catch {}
+        form.submit();
+      }
+    });
+  }
+</script>
