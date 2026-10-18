@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
-import { site, telLink, mailtoLink, whatsappUrl } from '../data/site';
+import { site, telLink, mailtoLink, whatsappUrl, mapaUrl } from '../data/site';
 import { contacto } from '../data/content';
 import { Icon } from 'astro-icon/components';
 
@@ -59,17 +59,23 @@ const { cabecera } = contacto;
         <div class="bg-cream-100 rounded-3xl p-7">
           <h3 class="font-display font-semibold text-brand-900 text-lg">Disponibilidad</h3>
           {contacto.horario.length > 0 && (
-            <p class="mt-3 text-sm text-brand-700 flex items-center gap-3">
-              <Icon name="lucide:clock" class="w-5 h-5 text-brand-500 shrink-0" />
+            <p class="mt-3 text-sm text-brand-700 flex gap-3">
+              <Icon name="lucide:clock" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" />
               <span>
                 {contacto.horario.map((linea, i) => <Fragment>{i > 0 && <br />}{linea}</Fragment>)}
               </span>
             </p>
           )}
-          {contacto.modalidad && (
+          {(contacto.modalidad || site.direccion) && (
             <p class="mt-3 text-sm text-brand-700 flex gap-3">
-              <Icon name="lucide:video" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" />
-              <span>{contacto.modalidad}</span>
+              <Icon name="lucide:map-pin" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" />
+              <span>
+                {contacto.modalidad}
+                {contacto.modalidad && site.direccion && <br />}
+                {site.direccion && (
+                  <a href={mapaUrl} target="_blank" rel="noopener" class="underline text-brand-800 hover:text-brand-900">{site.direccion}</a>
+                )}
+              </span>
             </p>
           )}
         </div>

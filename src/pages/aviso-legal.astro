@@ -11,9 +11,9 @@ import { site } from '../data/site';
   <section class="section">
     <div class="container-prose max-w-3xl">
       <h1 class="text-4xl text-brand-900 font-display font-semibold">Aviso legal y política de privacidad</h1>
-      <p class="mt-4 text-sm text-brand-600">Última actualización: 23 de mayo de 2026</p>
+      <p class="mt-4 text-sm text-brand-600">Última actualización: 18 de octubre de 2026</p>
 
-      <article class="prose prose-brand mt-10 max-w-none text-brand-800">
+      <article class="prose prose-brand mt-10 max-w-none text-brand-800 [&_p]:text-justify">
         <h2>1. Información del titular (LSSI-CE)</h2>
         <p>
           En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la
@@ -27,136 +27,41 @@ import { site } from '../data/site';
           <li><strong>NIF:</strong> 53992958K</li>
           <li><strong>Email de contacto:</strong> {site.email}</li>
           <li><strong>Teléfono:</strong> {site.telefono}</li>
+          {site.direccion && <li><strong>Domicilio profesional:</strong> {site.direccion}</li>}
           <li><strong>Notificaciones:</strong> a través del email indicado, que constituye medio de comunicación directa y efectiva conforme al art. 10.1 LSSI-CE.</li>
         </ul>
 
         <h2>2. Política de privacidad</h2>
-        <p>
-          De conformidad con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018,
-          de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos
-          digitales (LOPDGDD), se informa de lo siguiente:
-        </p>
-
-        <h3>Responsable del tratamiento</h3>
-        <p>
-          {site.nombre}, NIF 53992958K. Email de contacto: {site.email}.
-        </p>
-
-        <h3>Datos que se recogen</h3>
-        <p>
-          A través del formulario de contacto se solicitan: nombre, dirección de correo
-          electrónico, teléfono (opcional) y el mensaje que el usuario decida escribir.
-          Solo se recogen los datos estrictamente necesarios para responder a la consulta.
-        </p>
-        <p>
-          <strong>Este sitio web no está diseñado para recoger datos de salud.</strong>
-          Se recomienda no incluir en el mensaje del formulario información clínica
-          detallada. Los datos relativos a la salud se tratan únicamente en el marco
-          de la relación terapéutica, previa firma del consentimiento informado
-          específico (apartado 3).
-        </p>
-
-        <h3>Finalidad</h3>
-        <p>
-          Atender las solicitudes de información recibidas a través del formulario de
-          contacto y, en su caso, iniciar la relación profesional para la prestación de
-          los servicios de psicoterapia.
-        </p>
-
-        <h3>Base jurídica</h3>
-        <p>
-          Consentimiento expreso del interesado (art. 6.1.a RGPD), otorgado al marcar
-          la casilla habilitada en el formulario, y aplicación de medidas precontractuales
-          a su solicitud (art. 6.1.b RGPD).
-        </p>
-
-        <h3>Plazo de conservación</h3>
-        <p>
-          Los datos remitidos a través del formulario se conservarán como máximo durante
-          1 año si no se inicia relación profesional. Si se inicia tratamiento, la
-          historia clínica se conservará durante el plazo legalmente establecido
-          (mínimo cinco años desde la última actuación asistencial, conforme al
-          art. 17.1 de la Ley 41/2002, de autonomía del paciente).
-        </p>
-
-        <h3>Destinatarios y encargados de tratamiento</h3>
-        <p>
-          No se cederán datos a terceros salvo obligación legal. Se utilizan los
-          siguientes proveedores que actúan como encargados de tratamiento bajo
-          contrato:
-        </p>
         <ul>
-          <li><strong>Formspree</strong> (Estados Unidos): procesa el envío del formulario de contacto. Tratamiento amparado por las Cláusulas Contractuales Tipo (SCC) de la Comisión Europea.</li>
-          <li><strong>Vercel</strong> (Estados Unidos): alojamiento del sitio web. Tratamiento amparado por las Cláusulas Contractuales Tipo (SCC).</li>
-          <li><strong>Google Fonts</strong> (Estados Unidos): carga remota de tipografías. La visita a la web genera una conexión técnica con servidores de Google que puede registrar la dirección IP.</li>
+          <li><strong>Responsable:</strong> {site.nombre}, NIF 53992958K, <a href={`mailto:${site.email}`}>{site.email}</a>.</li>
+          <li><strong>Qué datos:</strong> los que escribes en el formulario de contacto (nombre, email, teléfono si lo pones y tu mensaje).</li>
+          <li><strong>Para qué:</strong> responder a tu consulta y, si lo decides, empezar la terapia.</li>
+          <li><strong>Por qué puedo:</strong> porque das tu consentimiento al marcar la casilla del formulario.</li>
+          <li><strong>Cuánto tiempo:</strong> como máximo un año si no se inicia la terapia.</li>
+          <li><strong>Con quién se comparten:</strong> con nadie, salvo obligación legal. Los proveedores técnicos de la web y del formulario solo los tratan por cuenta del titular.</li>
+          <li><strong>Tus derechos:</strong> puedes pedir verlos, corregirlos o borrarlos escribiendo a ese email. Si no te atiendo, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener">aepd.es</a>).</li>
         </ul>
-
-        <h3>Derechos de la persona usuaria</h3>
         <p>
-          Cualquier persona puede ejercer en todo momento, de forma gratuita,
-          escribiendo a <a href={`mailto:${site.email}`}>{site.email}</a>, los
-          siguientes derechos:
-        </p>
-        <ul>
-          <li>Acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad.</li>
-          <li>Retirar el consentimiento prestado en cualquier momento, sin que ello afecte a la licitud del tratamiento basado en el consentimiento previo a su retirada.</li>
-          <li>Presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) — C/ Jorge Juan 6, 28001 Madrid · <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a> — si considera que sus derechos no han sido debidamente atendidos.</li>
-        </ul>
-
-        <h3>Medidas de seguridad</h3>
-        <p>
-          El sitio se sirve íntegramente bajo conexión cifrada HTTPS. Se aplican
-          medidas técnicas y organizativas razonables para garantizar la
-          confidencialidad e integridad de los datos y minimizar la información
-          recogida.
+          El formulario no está pensado para datos de salud: esos solo se tratan dentro de la
+          terapia, con su propio consentimiento informado y bajo secreto profesional.
         </p>
 
-        <h2>3. Secreto profesional y datos de salud</h2>
+        <h2>3. Cookies</h2>
+        <p>Esta web no usa cookies de seguimiento, analítica ni publicidad.</p>
+
+        <h2>4. Menores de edad</h2>
         <p>
-          La actividad clínica está sometida al secreto profesional regulado por el
-          Código Deontológico del Colegio Oficial de la Psicología y al deber de
-          confidencialidad de la Ley 41/2002. Los datos personales relativos a la
-          salud son categoría especial conforme al art. 9 RGPD y se tratan con
-          garantías reforzadas únicamente en el marco de la relación terapéutica,
-          previa firma del consentimiento informado específico que se entrega al
-          inicio del tratamiento.
+          Los menores de 14 años no pueden enviar sus datos por el formulario sin la
+          autorización de sus padres o tutores legales.
         </p>
 
-        <h2>4. Cookies y servicios externos</h2>
-        <p>
-          Este sitio no utiliza cookies de seguimiento, analítica ni publicidad
-          propias. No se instalan cookies que requieran consentimiento previo
-          conforme al art. 22.2 LSSI-CE.
-        </p>
-        <p>
-          Se cargan recursos de terceros (Google Fonts) que pueden generar
-          comunicaciones técnicas con servidores externos al visitar la web. El
-          tratamiento de estos datos por parte de los proveedores se rige por sus
-          propias políticas de privacidad.
-        </p>
+        <h2>5. Propiedad intelectual</h2>
+        <p>Los textos, imágenes y diseño de esta web son de su titular o se usan con permiso, y no se pueden reproducir sin autorización.</p>
 
-        <h2>5. Personas menores de edad</h2>
+        <h2>6. Legislación aplicable</h2>
         <p>
-          Los servicios ofertados a través de esta web se dirigen a personas adultas y a
-          jóvenes. De conformidad con el art. 7 LOPDGDD, los menores de catorce (14)
-          años no podrán facilitar sus datos a través del formulario sin la
-          autorización expresa de sus padres o tutores legales.
-        </p>
-
-        <h2>6. Propiedad intelectual</h2>
-        <p>
-          Todos los contenidos de esta web (textos, imágenes, diseño) son propiedad
-          del titular o se utilizan con autorización. Queda prohibida su
-          reproducción, distribución o comunicación pública sin consentimiento
-          previo y por escrito.
-        </p>
-
-        <h2>7. Legislación aplicable y jurisdicción</h2>
-        <p>
-          Estas condiciones se rigen por la legislación española. Para las
-          relaciones con personas consumidoras, las partes se someten a los
-          juzgados y tribunales del domicilio del consumidor. En los demás
-          casos, a los juzgados y tribunales de {site.ciudad}.
+          Se aplica la legislación española. Para consumidores, son competentes los juzgados de
+          su domicilio; en los demás casos, los de {site.ciudad}.
         </p>
       </article>
     </div>

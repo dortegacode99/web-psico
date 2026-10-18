@@ -16,11 +16,27 @@ import contactoJson from './textos/contacto.json';
 
 type Texto = string | null | undefined;
 
-/** El texto en una sola línea, sin espacios sobrantes ('' si está vacío). */
-export const limpio = (texto: Texto) => (texto ?? '').replace(/\s+/g, ' ').trim();
+/**
+ * El texto en una sola línea, sin espacios sobrantes ('' si está vacío). Respeta los espacios
+ * que no se parten (U+00A0, p. ej. "24 h"), que se ponen a propósito para que no queden
+ * "24" y "h" en líneas distintas.
+ */
+export const limpio = (texto: Texto) => (texto ?? '').replace(/[^\S\u00a0]+/g, ' ').trim();
 
 /** Parte un texto largo en párrafos (separados por una línea en blanco). */
 export const parrafos = (texto: Texto) => (texto ?? '').split(/\n\s*\n/).map(limpio).filter(Boolean);
+
+/**
+ * Pasa un párrafo a HTML con las **negritas** marcadas entre dobles asteriscos. Escapa todo lo
+ * demás, así que un texto nunca puede meter HTML en la página. Se pinta con set:html.
+ */
+export const negritas = (texto: string) =>
+  texto
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-brand-900">$1</strong>');
 
 /** Icono de respaldo si una tarjeta se guarda sin icono (sin él, el build fallaría). */
 const icono = (nombre: Texto) => limpio(nombre) || 'lucide:sparkles';
@@ -66,6 +82,7 @@ export const presentacion = {
 
 export const sobreMi = {
   cabecera: seccion(sobreMiJson.cabecera),
+  valoresTitulo: limpio(sobreMiJson.valoresTitulo),
   valores: sinVacios(sobreMiJson.valores, (v) => v.titulo).map((v) => ({
     icono: icono(v.icono),
     titulo: limpio(v.titulo),
@@ -81,14 +98,35 @@ export const sobreMi = {
 
 // --- Servicios ---
 
-/** "En qué puedo ayudarte": tarjetas de servicios (Inicio y Servicios). */
-export const servicios = {
-  ...seccion(serviciosJson.areas),
-  lista: sinVacios(serviciosJson.areas?.lista, (s) => s.titulo).map((s) => ({
+type GrupoJson = {
+  pestana?: Texto;
+  detalle?: Texto;
+  lista?: { icono?: Texto; titulo?: Texto; descripcion?: Texto }[] | null;
+} | null | undefined;
+
+/** Una pestaña de servicios (Adultos / Infanto-juvenil) con sus tarjetas. */
+const grupo = (id: string, g: GrupoJson, pestanaPorDefecto: string) => ({
+  id,
+  pestana: limpio(g?.pestana) || pestanaPorDefecto,
+  detalle: limpio(g?.detalle),
+  lista: sinVacios(g?.lista, (s) => s.titulo).map((s) => ({
     icono: icono(s.icono),
     titulo: limpio(s.titulo),
     descripcion: limpio(s.descripcion),
   })),
+});
+
+/**
+ * "En qué puedo ayudarte" (Inicio y Servicios): una pestaña por público, en este orden (la
+ * primera es la que sale abierta al entrar). Una pestaña que se
+ * queda sin tarjetas desaparece; si solo queda una, se pinta sin selector.
+ */
+export const servicios = {
+  ...seccion(serviciosJson.areas),
+  grupos: [
+    grupo('infanto-juvenil', serviciosJson.areas?.infantoJuvenil, 'Infanto-juvenil'),
+    grupo('adultos', serviciosJson.areas?.adultos, 'Adultos'),
+  ].filter((g) => g.lista.length > 0),
 };
 
 /** "El proceso, paso a paso" (Inicio y Servicios). El número de cada paso sale solo. */

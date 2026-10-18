@@ -1,12 +1,13 @@
 {
   "nombre": "Jacobo Chamorro",
-  "tituloProfesional": "Psicólogo online",
+  "tituloProfesional": "Psicólogo online y presencial",
   "colegiado": "M-40114",
   "email": "jacobo.chamorro.ticpg@gmail.com",
   "telefono": "+34 618 077 130",
   "whatsapp": "34618077130",
   "whatsappMensaje": "Hola, me gustaría informarme sobre la primera sesión.",
   "ciudad": "Madrid",
+  "direccion": "Av. España, 34, 1º G, 28220 Majadahonda, Madrid",
   "redes": {
     "linkedin": "https://www.linkedin.com/in/jchamval/",
     "instagram": "",

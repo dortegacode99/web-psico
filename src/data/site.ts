@@ -25,10 +25,10 @@ export const site = {
   whatsapp: (datos.whatsapp ?? '').replace(/\D/g, ''),
   whatsappMensaje: limpio(datos.whatsappMensaje),
 
-  // --- Ubicación ---
-  // Aunque la atención es online, el aviso legal requiere una dirección a efectos de
-  // notificaciones (puede ser personal o un apartado postal).
-  direccion: '',
+  // --- Ubicación (editable) ---
+  // La consulta presencial: sale en Contacto, en el pie, en el aviso legal y en los datos
+  // para Google. Vacía = no sale en ningún sitio.
+  direccion: limpio(datos.direccion),
   ciudad: limpio(datos.ciudad),
   pais: 'España',
 
@@ -57,6 +57,20 @@ export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURICompo
 
 /** Enlace tel: para móviles. */
 export const telLink = `tel:${site.telefono.replace(/\s/g, '')}`;
+
+/** La dirección de la consulta en Google Maps. */
+export const mapaUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.direccion)}`;
+
+/**
+ * La dirección por partes para los datos de Google (schema.org), sacadas de
+ * "Calle, nº, piso, 28220 Localidad, Provincia". Si no tiene código postal, va entera.
+ */
+export const direccionPorPartes = (() => {
+  const m = site.direccion.match(/^(.*?),?\s*(\d{5})\s+([^,]+)(?:,\s*(.+))?$/);
+  return m
+    ? { streetAddress: m[1], postalCode: m[2], addressLocality: m[3].trim(), addressRegion: m[4]?.trim() }
+    : { streetAddress: site.direccion };
+})();
 
 /** Enlace mailto:. */
 export const mailtoLink = `mailto:${site.email}`;

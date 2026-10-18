@@ -1,26 +1,37 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { presentacion } from '../data/content';
+import { presentacion, negritas } from '../data/content';
+import { site } from '../data/site';
 
 interface Props {
   /** Si true, renderiza versión resumida con CTA a /sobre-mi (para home). */
   compact?: boolean;
   /** Fondo blanco en vez del crema de la página. */
   fondoBlanco?: boolean;
+  /** Sin margen de arriba: la sección anterior tiene el mismo fondo (si no, se suman los dos). */
+  pegada?: boolean;
 }
-const { compact = false, fondoBlanco = false } = Astro.props;
+const { compact = false, fondoBlanco = false, pegada = false } = Astro.props;
 const parrafos = compact
   ? presentacion.parrafos
   : [...presentacion.parrafos, ...presentacion.ampliacion];
+// En la portada ya sale la foto de Jacobo arriba, así que aquí se queda la acuarela del sendero;
+// en /sobre-mi va su foto.
+const imagen = compact
+  ? {
+      src: '/images/sobre-mi.webp',
+      alt: 'Acuarela de un sendero serpenteante en un paisaje natural al amanecer, como metáfora del proceso terapéutico',
+    }
+  : { src: '/images/jacobo-chamorro.jpg', alt: `Retrato de ${site.nombre}` };
 ---
 
-<section class:list={['section', fondoBlanco && 'bg-white']}>
+<section class:list={['section', fondoBlanco && 'bg-white', pegada && '!pt-0']}>
   <div class="container-prose grid lg:grid-cols-12 gap-12 items-center">
     <div class="lg:col-span-5 order-2 lg:order-1">
       <div class="aspect-[3/4] rounded-3xl shadow-soft overflow-hidden">
         <img
-          src="/images/sobre-mi.png"
-          alt="Acuarela de un sendero serpenteante en un paisaje natural al amanecer, como metáfora del proceso terapéutico"
+          src={imagen.src}
+          alt={imagen.alt}
           class="w-full h-full object-cover"
           loading="lazy"
           decoding="async"
@@ -29,12 +40,12 @@ const parrafos = compact
     </div>
 
     <div class="lg:col-span-7 order-1 lg:order-2">
-      {presentacion.etiqueta && <span class="eyebrow">{presentacion.etiqueta}</span>}
+      {compact && presentacion.etiqueta && <span class="eyebrow">{presentacion.etiqueta}</span>}
       <h2 class="mt-3 text-3xl sm:text-4xl text-brand-900">
         {presentacion.titulo}
       </h2>
-      <div class="mt-6 space-y-4 text-brand-700 leading-relaxed">
-        {parrafos.map((p) => <p>{p}</p>)}
+      <div class="mt-6 space-y-4 text-brand-700 leading-relaxed text-justify">
+        {parrafos.map((p) => <p set:html={negritas(p)} />)}
       </div>
 
       {compact && (

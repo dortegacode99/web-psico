@@ -40,4 +40,101 @@
   .eyebrow {
     @apply inline-block text-xs font-semibold tracking-widest uppercase text-brand-500;
   }
+
+  /*
+   * Tarjetas de servicio (ServiceCard.astro). Sin JavaScript se ven enteras, como una tarjeta
+   * normal. Con él (.volteo-on en la sección) delante va el icono y el nombre, y al pulsarlas
+   * giran y enseñan la descripción detrás.
+   */
+  .tarjeta-volteo {
+    @apply bg-white rounded-3xl p-7 border border-brand-100 transition-shadow hover:shadow-soft;
+  }
+  .tarjeta-cara-detras {
+    @apply mt-2;
+  }
+  .tarjeta-titulo-detras,
+  .tarjeta-pista {
+    @apply hidden;
+  }
+
+  .volteo-on .servicios-tarjetas {
+    @apply grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 items-start;
+  }
+  .volteo-on .tarjeta-volteo {
+    @apply bg-transparent p-0 border-0 rounded-none shadow-none;
+    perspective: 1200px;
+  }
+  .volteo-on .tarjeta-interior {
+    @apply relative cursor-pointer rounded-3xl;
+    transform-style: preserve-3d;
+    transition:
+      transform 0.6s cubic-bezier(0.3, 0.7, 0.2, 1),
+      height 0.45s cubic-bezier(0.3, 0.7, 0.2, 1);
+  }
+  .volteo-on .sin-transicion .tarjeta-interior {
+    transition: none;
+  }
+  .volteo-on .tarjeta-interior[aria-expanded='true'] {
+    transform: rotateY(180deg);
+  }
+  .volteo-on .tarjeta-cara {
+    @apply rounded-3xl border p-5 sm:p-6 lg:p-7;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .volteo-on .tarjeta-cara-delante {
+    @apply relative flex h-full items-center gap-4 pr-12 sm:flex-col sm:items-start sm:justify-center sm:gap-0 sm:pr-12 bg-white border-brand-100 transition-[border-color,box-shadow];
+  }
+  .volteo-on .tarjeta-interior:hover .tarjeta-cara-delante {
+    @apply shadow-soft border-brand-300;
+  }
+  .volteo-on [data-tono='accent'] .tarjeta-interior:hover .tarjeta-cara-delante {
+    @apply border-accent-300;
+  }
+  .volteo-on .tarjeta-cara-detras {
+    @apply absolute inset-0 mt-0 bg-brand-50 border-brand-200;
+    transform: rotateY(180deg);
+  }
+  .volteo-on [data-tono='accent'] .tarjeta-cara-detras {
+    @apply bg-accent-50 border-accent-200;
+  }
+  .volteo-on .tarjeta-cara-detras .tarjeta-pista {
+    @apply top-4 translate-y-0;
+  }
+  .volteo-on .tarjeta-cara-delante h3 {
+    @apply mt-0 sm:mt-5;
+  }
+  .volteo-on .tarjeta-titulo-detras {
+    @apply block mb-2;
+  }
+  .volteo-on .tarjeta-pista {
+    @apply absolute top-1/2 -translate-y-1/2 right-4 sm:top-4 sm:translate-y-0 flex w-7 h-7 items-center justify-center rounded-full;
+  }
+
+  /* Servicios: al cambiar de pestaña las tarjetas entran en cascada (--i = su posición). */
+  .servicios-animar .servicios-tarjetas > * {
+    animation: tarjeta-entra 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 45ms);
+  }
+}
+
+@keyframes tarjeta-entra {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .servicios-animar .servicios-tarjetas > * {
+    animation: none;
+  }
+  .servicios-pestanas > span,
+  .volteo-on .tarjeta-interior {
+    transition: none;
+  }
 }

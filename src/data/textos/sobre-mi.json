@@ -2,15 +2,16 @@
   "cabecera": {
     "etiqueta": "Sobre mí",
     "titulo": "Una mirada cercana, profesional y siempre de tu lado",
-    "texto": "Soy Jacobo Chamorro, psicólogo general sanitario colegiado en Madrid. Trabajo online con jóvenes y adultos desde el respeto a su historia, combinando escucha cálida y herramientas prácticas para que no solo te sientas comprendido, sino que avances en lo que de verdad te importa."
+    "texto": "Soy Jacobo Chamorro, psicólogo general sanitario colegiado en Madrid. Trabajo con niños, adolescentes y adultos, de forma presencial y online, desde el respeto a la historia de cada persona, combinando escucha cálida y herramientas prácticas para que no solo te sientas comprendido, sino que avances en lo que de verdad te importa."
   },
   "presentacion": {
     "etiqueta": "Sobre mí",
-    "titulo": "Tu dolor y emociones son el punto de partida del proceso",
-    "texto": "Soy Jacobo Chamorro Valladares, psicólogo general sanitario con formación en múltiples modelos de entender la psicología y dificultades diversas que pueden surgir en la vida de las personas. Mi hoja de ruta a la hora de trabajar es entender que el sufrimiento de las personas se merece mi máximo respeto, por lo que partir de una escucha, comprensión y calidez de la historia de la otra persona es lo más importante. El proceso terapéutico no es de juicio, sino de un entendimiento sobre el por qué nos sentimos de la forma en la que lo hacemos y qué podemos hacer con ello.\n\nMi formación comprende tanto el grado en psicología como el máster universitario en psicología general sanitaria. De forma más específica, tengo formación en población infanto-juvenil (aspecto especialmente útil con adultos en las situaciones en las que se exploran momentos de infancia), en ideación suicida y en el manejo de las emociones en terapia familiar sistémica.",
-    "textoAmpliado": "Como psicólogo mi enfoque es poder ayudar a que la persona se sienta no solo comprendida, sino que avanza en las cosas que le resultan importantes. Los modelos principales que empleo para ello son las terapias de tercera generación y la cognitivo-conductual, empleando algunas técnicas de la terapia familiar sistémica, adaptando el modelo y forma de trabajar en función de qué tipo de dificultades y preferencias tenga la persona.",
+    "titulo": "Tu dolor y tus emociones son el punto de partida del proceso",
+    "texto": "Soy Jacobo Chamorro Valladares, **psicólogo general sanitario** con formación en múltiples formas de entender la psicología y en las diversas dificultades que pueden surgir en la vida de las personas. **Mi hoja de ruta a la hora de trabajar es entender que el sufrimiento de las personas merece mi máximo respeto**, por lo que lo más importante es partir de la escucha, la comprensión y la calidez hacia la historia de cada persona, familia o niño. **El proceso terapéutico no es de juicio, sino de entendimiento** sobre por qué nos sentimos de la forma en que lo hacemos y qué podemos hacer con ello.\n\nMi formación comprende tanto el Grado en Psicología como el Máster Universitario en Psicología General Sanitaria. De forma más específica, tengo **formación en población infanto-juvenil, en ideación suicida y en el manejo de las emociones** en terapia familiar sistémica. Por otro lado, cuento con **varios años de experiencia** en el manejo de dificultades emocionales con personas de diferentes edades, una experiencia práctica y enriquecedora para entender los distintos momentos evolutivos que atraviesa una persona a lo largo de su vida.",
+    "textoAmpliado": "Como psicólogo, mi enfoque es ayudar a que la persona, el niño o la familia no solo se sientan comprendidos, sino que **avancen en las cosas que les resultan importantes**. Los modelos principales que empleo para ello son las terapias de tercera generación y la terapia cognitivo-conductual, junto con algunas técnicas de la terapia familiar sistémica, **adaptando el modelo y la forma de trabajar** a las dificultades y preferencias de cada caso.",
     "botonPortada": "Saber más sobre mí"
   },
+  "valoresTitulo": "Lo que puedes esperar",
   "valores": [
     {
       "icono": "lucide:heart",
@@ -25,22 +26,22 @@
     {
       "icono": "lucide:lock",
       "titulo": "Confidencialidad",
-      "texto": "Lo que se habla en sesión, se queda en sesión. Plataforma segura y conforme al RGPD."
+      "texto": "Lo que se habla en sesión se queda en sesión. Plataforma segura y conforme al RGPD."
     }
   ],
   "formacion": {
-    "etiqueta": "Formación",
+    "etiqueta": "Trayectoria",
     "titulo": "Formación",
     "lista": [
-      "Grado en Psicología — Universidad Complutense de Madrid (2017–2021)",
-      "Máster Universitario en Psicología General Sanitaria — Universidad Pontificia Comillas ICAI-ICADE (2021–2023)",
+      "Grado en Psicología — Universidad Complutense de Madrid (2017⁠–⁠2021)",
+      "Máster Universitario en Psicología General Sanitaria — Universidad Pontificia Comillas ICAI-ICADE (2021⁠–⁠2023)",
       "Máster en Especialización Terapéutica Cognitivo-Conductual en Población Infanto-Juvenil — Universidad Pontificia Comillas ICAI-ICADE (2023)"
     ]
   },
   "enfoque": {
     "etiqueta": "Enfoque",
     "titulo": "Cómo trabajo",
-    "texto": "Trabajo principalmente con las terapias de tercera generación y el modelo cognitivo-conductual, incorporando técnicas de la terapia familiar sistémica cuando ayudan a situar lo que ocurre dentro del contexto relacional.\n\nLas sesiones combinan escucha sin juicio y orientación práctica: primero entender de dónde viene lo que sientes, después construir herramientas para avanzar. Adapto el modelo a cada persona, sin método único.\n\nÁreas de trabajo principales: ansiedad, depresión, autoestima, duelo, relaciones familiares y de pareja, y estrés laboral."
+    "texto": "Trabajo principalmente con las **terapias de tercera generación y el modelo cognitivo-conductual**, e incorporo técnicas de la terapia familiar sistémica cuando ayudan a situar lo que ocurre dentro del contexto relacional y a manejar las relaciones familiares en los momentos en que se vuelven más complejas.\n\nLas sesiones combinan **escucha sin juicio y orientación práctica**: primero, entender de dónde viene lo que sientes; después, construir herramientas para avanzar, flexibles ante los cambios y las circunstancias imprevistas que puedan surgir. Adapto mi modelo a cada persona, **sin un método único**.\n\n**Áreas de trabajo principales:** ansiedad, depresión, autoestima, duelo, relaciones familiares y de pareja, estrés laboral, manejo de rabietas y frustración en niños, higiene del sueño, manejo de pensamientos intrusivos, habilidades sociales, control de impulsos, y comprensión y gestión autónoma de las emociones."
   },
-  "descripcionGoogle": "Conoce mi formación, enfoque terapéutico y forma de trabajar en terapia online para jóvenes y adultos."
+  "descripcionGoogle": "Conoce mi formación, enfoque terapéutico y forma de trabajar en terapia online y presencial para niños, adolescentes y adultos."
 }

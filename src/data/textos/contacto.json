@@ -10,10 +10,10 @@
   },
   "disponibilidad": {
     "horario": [
-      "Lunes a viernes · 9:00 – 13:00",
-      "Miércoles · 16:00 – 21:00"
+      "Lunes a viernes · 9:00 – 13:00 · online",
+      "Miércoles · 15:00 – 21:00 · presencial"
     ],
-    "modalidad": "Sesiones 100% online."
+    "modalidad": "Consulta presencial:"
   },
   "whatsapp": {
     "titulo": "¿Prefieres WhatsApp?",
