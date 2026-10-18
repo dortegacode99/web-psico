@@ -58,7 +58,7 @@
   }
 
   .volteo-on .servicios-tarjetas {
-    @apply gap-4 sm:gap-6;
+    @apply grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 items-start;
   }
   .volteo-on .tarjeta-volteo {
     @apply bg-transparent p-0 border-0 rounded-none shadow-none;
@@ -67,7 +67,12 @@
   .volteo-on .tarjeta-interior {
     @apply relative cursor-pointer rounded-3xl;
     transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.3, 0.7, 0.2, 1);
+    transition:
+      transform 0.6s cubic-bezier(0.3, 0.7, 0.2, 1),
+      height 0.45s cubic-bezier(0.3, 0.7, 0.2, 1);
+  }
+  .volteo-on .sin-transicion .tarjeta-interior {
+    transition: none;
   }
   .volteo-on .tarjeta-interior[aria-expanded='true'] {
     transform: rotateY(180deg);
@@ -78,7 +83,7 @@
     -webkit-backface-visibility: hidden;
   }
   .volteo-on .tarjeta-cara-delante {
-    @apply relative flex h-full flex-row items-center gap-4 pr-12 sm:flex-col sm:items-start sm:justify-center sm:gap-0 sm:pr-7 bg-white border-brand-100 transition-[border-color,box-shadow];
+    @apply relative h-full pr-10 sm:pr-12 bg-white border-brand-100 transition-[border-color,box-shadow];
   }
   .volteo-on .tarjeta-interior:hover .tarjeta-cara-delante {
     @apply shadow-soft border-brand-300;
@@ -92,9 +97,6 @@
   }
   .volteo-on [data-tono='accent'] .tarjeta-cara-detras {
     @apply bg-accent-50 border-accent-200;
-  }
-  .volteo-on .tarjeta-nombre {
-    @apply mt-0 sm:mt-5;
   }
   .volteo-on .tarjeta-titulo-detras {
     @apply block mb-2;
@@ -128,12 +130,5 @@
   .servicios-pestanas > span,
   .volteo-on .tarjeta-interior {
     transition: none;
-  }
-}
-
-/* Safari antiguo solo entiende el guionado automático con prefijo (párrafos justificados). */
-@layer utilities {
-  .hyphens-auto {
-    -webkit-hyphens: auto;
   }
 }
