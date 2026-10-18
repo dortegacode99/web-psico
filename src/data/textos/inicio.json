@@ -4,7 +4,6 @@
     "texto": "Un espacio cálido y seguro donde poder mirar con calma, entender lo que ocurre y construir herramientas para avanzar. Sesiones online o presenciales, como tú decidas.",
     "boton": "Contacta conmigo",
     "destacados": [
-      { "valor": "Online", "texto": "o presencial" },
       { "valor": "50 min", "texto": "por sesión" },
       { "valor": "100%", "texto": "confidencial" }
     ]
