@@ -28,16 +28,96 @@ const tonos = {
 ---
 
 <!--
-  Sin JavaScript se ve entera. Con él (ServicesGrid.astro) se queda en icono y nombre, y al
-  pulsarla la descripción se abre en una ventana. Estilos en global.css (.tarjeta-servicio).
+  Sin JavaScript la tarjeta se ve entera (icono, nombre y descripción). Con él, el script de
+  abajo la convierte en una tarjeta que se da la vuelta al pulsarla: delante el icono y el
+  nombre, detrás la descripción. Los estilos están en global.css (.tarjeta-volteo).
 -->
-<article class="tarjeta-servicio group" data-tono={tono} style={`--i: ${orden}`}>
-  <div class:list={['tarjeta-icono w-10 h-10 sm:w-12 sm:h-12 rounded-2xl transition-colors flex items-center justify-center', tonos.caja]}>
-    <Icon name={icono} class:list={['w-5 h-5 sm:w-6 sm:h-6 transition-colors', tonos.icono]} />
+<article class="tarjeta-volteo group" data-tono={tono} style={`--i: ${orden}`}>
+  <div class="tarjeta-interior">
+    <div class="tarjeta-cara tarjeta-cara-delante">
+      <div class:list={['shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-2xl transition-colors flex items-center justify-center', tonos.caja]}>
+        <Icon name={icono} class:list={['w-5 h-5 sm:w-6 sm:h-6 transition-colors', tonos.icono]} />
+      </div>
+      <h3 class="tarjeta-nombre mt-4 sm:mt-5 text-base sm:text-lg font-display font-semibold text-brand-900 leading-snug">{titulo}</h3>
+      <span aria-hidden="true" class:list={['tarjeta-pista', tonos.pista]}>
+        <Icon name="lucide:plus" class="w-4 h-4" />
+      </span>
+    </div>
+    <div class="tarjeta-cara tarjeta-cara-detras">
+      <p class="tarjeta-titulo-detras font-display font-semibold text-sm text-brand-900 pr-8">{titulo}</p>
+      <p class="text-sm text-brand-700 leading-relaxed text-justify hyphens-auto">{descripcion}</p>
+      <span aria-hidden="true" class:list={['tarjeta-pista', tonos.pista]}>
+        <Icon name="lucide:x" class="w-4 h-4" />
+      </span>
+    </div>
   </div>
-  <h3 class="mt-4 sm:mt-5 text-base sm:text-lg font-display font-semibold text-brand-900 leading-snug">{titulo}</h3>
-  <p class="tarjeta-descripcion mt-2 text-sm text-brand-700 leading-relaxed">{descripcion}</p>
-  <span aria-hidden="true" class:list={['tarjeta-pista', tonos.pista]}>
-    <Icon name="lucide:plus" class="w-4 h-4" />
-  </span>
 </article>
+
+<script>
+  const raices = [...document.querySelectorAll<HTMLElement>('[data-servicios]')];
+  raices.forEach((raiz) => raiz.classList.add('volteo-on'));
+
+  // Todas las tarjetas de una pestaña miden lo mismo: lo que pida la más alta, contando su
+  // descripción (la cara de atrás). Así al girar ninguna cambia de tamaño.
+  const igualar = () => {
+    document.querySelectorAll<HTMLElement>('.volteo-on .servicios-tarjetas').forEach((rejilla) => {
+      if (rejilla.offsetParent === null) return; // pestaña oculta: se iguala al enseñarla
+      const interiores = [...rejilla.querySelectorAll<HTMLElement>('.tarjeta-interior')];
+      interiores.forEach((i) => (i.style.height = ''));
+      const alto = Math.max(
+        ...interiores.map((i) => {
+          const delante = i.querySelector<HTMLElement>('.tarjeta-cara-delante')!;
+          const detras = i.querySelector<HTMLElement>('.tarjeta-cara-detras')!;
+          detras.style.bottom = 'auto'; // su alto natural, no el de la tarjeta
+          const natural = detras.offsetHeight;
+          detras.style.bottom = '';
+          return Math.max(delante.offsetHeight, natural);
+        }),
+      );
+      interiores.forEach((i) => (i.style.height = `${alto}px`));
+    });
+  };
+
+  document.querySelectorAll<HTMLElement>('.tarjeta-volteo').forEach((tarjeta) => {
+    const interior = tarjeta.querySelector<HTMLElement>('.tarjeta-interior')!;
+    const delante = tarjeta.querySelector<HTMLElement>('.tarjeta-cara-delante')!;
+    const detras = tarjeta.querySelector<HTMLElement>('.tarjeta-cara-detras')!;
+    const titulo = tarjeta.querySelector('h3')?.textContent?.trim() ?? '';
+
+    interior.setAttribute('role', 'button');
+    interior.tabIndex = 0;
+    interior.setAttribute('aria-expanded', 'false');
+    interior.setAttribute('aria-label', `${titulo}: ver descripción`);
+    detras.setAttribute('aria-hidden', 'true');
+
+    const voltear = () => {
+      const abrir = interior.getAttribute('aria-expanded') !== 'true';
+      interior.setAttribute('aria-expanded', String(abrir));
+      interior.setAttribute('aria-label', abrir ? titulo : `${titulo}: ver descripción`);
+      detras.setAttribute('aria-hidden', String(!abrir));
+      delante.setAttribute('aria-hidden', String(abrir));
+    };
+
+    interior.addEventListener('click', voltear);
+    interior.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        voltear();
+      }
+    });
+  });
+
+  igualar();
+  // Al cambiar de pestaña (el panel deja de estar oculto), al cambiar el ancho y cuando
+  // terminan de cargar las fuentes (cambian el alto del texto).
+  raices.forEach((raiz) =>
+    new MutationObserver(igualar).observe(raiz, { subtree: true, attributeFilter: ['hidden'] }),
+  );
+  let anchoPrevio = window.innerWidth;
+  window.addEventListener('resize', () => {
+    if (window.innerWidth === anchoPrevio) return;
+    anchoPrevio = window.innerWidth;
+    igualar();
+  });
+  document.fonts?.ready.then(igualar);
+</script>
