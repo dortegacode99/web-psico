@@ -15,25 +15,29 @@ const { icono, titulo, descripcion, tono = 'brand', orden = 0 } = Astro.props;
 // Clases completas (no montadas a trozos) para que Tailwind las encuentre al compilar.
 const tonos = {
   brand: {
-    borde: 'hover:border-brand-300',
     caja: 'bg-brand-100 group-hover:bg-brand-500',
     icono: 'text-brand-600 group-hover:text-white',
+    pista: 'bg-brand-50 text-brand-500',
   },
   accent: {
-    borde: 'hover:border-accent-300',
     caja: 'bg-accent-100 group-hover:bg-accent-400',
     icono: 'text-accent-700 group-hover:text-brand-900',
+    pista: 'bg-accent-50 text-accent-700',
   },
 }[tono];
 ---
 
-<article
-  class:list={['group bg-white rounded-3xl p-7 border border-brand-100 hover:shadow-soft transition-all', tonos.borde]}
-  style={`--i: ${orden}`}
->
-  <div class:list={['w-12 h-12 rounded-2xl transition-colors flex items-center justify-center', tonos.caja]}>
-    <Icon name={icono} class:list={['w-6 h-6 transition-colors', tonos.icono]} />
+<!--
+  Sin JavaScript se ve entera. Con él (ServicesGrid.astro) se queda en icono y nombre, y al
+  pulsarla la descripción se abre en una ventana. Estilos en global.css (.tarjeta-servicio).
+-->
+<article class="tarjeta-servicio group" data-tono={tono} style={`--i: ${orden}`}>
+  <div class:list={['tarjeta-icono w-10 h-10 sm:w-12 sm:h-12 rounded-2xl transition-colors flex items-center justify-center', tonos.caja]}>
+    <Icon name={icono} class:list={['w-5 h-5 sm:w-6 sm:h-6 transition-colors', tonos.icono]} />
   </div>
-  <h3 class="mt-5 text-lg font-display font-semibold text-brand-900">{titulo}</h3>
-  <p class="mt-2 text-sm text-brand-700 leading-relaxed">{descripcion}</p>
+  <h3 class="mt-4 sm:mt-5 text-base sm:text-lg font-display font-semibold text-brand-900 leading-snug">{titulo}</h3>
+  <p class="tarjeta-descripcion mt-2 text-sm text-brand-700 leading-relaxed">{descripcion}</p>
+  <span aria-hidden="true" class:list={['tarjeta-pista', tonos.pista]}>
+    <Icon name="lucide:plus" class="w-4 h-4" />
+  </span>
 </article>

@@ -41,6 +41,65 @@
     @apply inline-block text-xs font-semibold tracking-widest uppercase text-brand-500;
   }
 
+  /*
+   * Tarjetas de servicio (ServiceCard.astro). Sin JavaScript se ven enteras: icono, nombre y
+   * descripción. Con él (.tarjetas-js en la sección) solo el icono y el nombre, todas del mismo
+   * alto, y al pulsarlas la descripción se abre en una ventana (ServicesGrid.astro).
+   */
+  .tarjeta-servicio {
+    @apply relative bg-white rounded-3xl p-7 border border-brand-100 transition-[border-color,box-shadow] hover:shadow-soft;
+  }
+  .tarjeta-servicio[data-tono='brand'] {
+    @apply hover:border-brand-300;
+  }
+  .tarjeta-servicio[data-tono='accent'] {
+    @apply hover:border-accent-300;
+  }
+  .tarjeta-pista {
+    @apply hidden;
+  }
+
+  .tarjetas-js .servicios-tarjetas {
+    @apply grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3;
+    grid-auto-rows: 1fr;
+  }
+  .tarjetas-js .tarjeta-servicio {
+    @apply cursor-pointer p-4 pr-10 sm:p-6 sm:pr-12;
+  }
+  .tarjetas-js .tarjeta-descripcion {
+    @apply hidden;
+  }
+  .tarjetas-js .tarjeta-pista {
+    @apply absolute top-3 right-3 sm:top-4 sm:right-4 flex w-7 h-7 items-center justify-center rounded-full;
+  }
+
+  /* La ventana con la descripción: entra girando desde la tarjeta. */
+  .servicio-dialogo {
+    @apply w-[min(30rem,calc(100vw-2rem))] max-w-none bg-transparent p-0 overflow-visible;
+  }
+  .servicio-dialogo::backdrop {
+    background: rgb(40 58 54 / 0.45);
+    backdrop-filter: blur(3px);
+  }
+  .servicio-dialogo-panel {
+    @apply relative rounded-3xl border p-7 sm:p-8 shadow-soft bg-brand-50 border-brand-200;
+  }
+  .servicio-dialogo-panel[data-tono='accent'] {
+    @apply bg-accent-50 border-accent-200;
+  }
+  .servicio-dialogo[open] .servicio-dialogo-panel {
+    animation: dialogo-entra 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .servicio-dialogo[open]::backdrop {
+    animation: fundido 0.3s ease-out both;
+  }
+  .servicio-dialogo.cerrando .servicio-dialogo-panel {
+    animation: dialogo-sale 0.22s ease-in both;
+  }
+  .servicio-dialogo.cerrando::backdrop {
+    animation: fundido 0.22s ease-in reverse both;
+  }
+
   /* Servicios: al cambiar de pestaña las tarjetas entran en cascada (--i = su posición). */
   .servicios-animar .servicios-tarjetas > * {
     animation: tarjeta-entra 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -59,11 +118,39 @@
   }
 }
 
+@keyframes dialogo-entra {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(-80deg) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dialogo-sale {
+  to {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(50deg) scale(0.85);
+  }
+}
+
+@keyframes fundido {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .servicios-animar .servicios-tarjetas > * {
     animation: none;
   }
   .servicios-pestanas > span {
     transition: none;
+  }
+  .servicio-dialogo[open] .servicio-dialogo-panel,
+  .servicio-dialogo[open]::backdrop {
+    animation: none;
   }
 }
