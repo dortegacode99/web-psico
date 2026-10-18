@@ -3,7 +3,23 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "jacobochamorro.vercel.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "jacobochamorro.vercel.app"
+        }
+      ],
+      "destination": "https://jacobochamorro.es/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "web-psico-eight.vercel.app"
+        }
+      ],
       "destination": "https://jacobochamorro.es/:path*",
       "permanent": true
     }
