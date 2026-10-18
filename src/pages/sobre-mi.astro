@@ -22,7 +22,7 @@ const { cabecera, valores, formacion, enfoque } = sobreMi;
     </div>
   </section>
 
-  <AboutSection />
+  <AboutSection pegada />
 
   <section class="section bg-white">
     <div class="container-prose grid lg:grid-cols-3 gap-8">
@@ -39,7 +39,7 @@ const { cabecera, valores, formacion, enfoque } = sobreMi;
   </section>
 
   <section class="section">
-    <div class="container-prose grid lg:grid-cols-2 gap-12">
+    <div class="container-prose grid lg:grid-cols-3 gap-12">
       <div>
         {formacion.etiqueta && <span class="eyebrow">{formacion.etiqueta}</span>}
         <h2 class="mt-3 text-3xl text-brand-900">{formacion.titulo}</h2>
@@ -53,7 +53,7 @@ const { cabecera, valores, formacion, enfoque } = sobreMi;
         </ul>
       </div>
 
-      <div>
+      <div class="lg:col-span-2">
         {enfoque.etiqueta && <span class="eyebrow">{enfoque.etiqueta}</span>}
         <h2 class="mt-3 text-3xl text-brand-900">{enfoque.titulo}</h2>
         <div class="mt-6 space-y-4 text-brand-700 leading-relaxed text-justify">
@@ -63,5 +63,5 @@ const { cabecera, valores, formacion, enfoque } = sobreMi;
     </div>
   </section>
 
-  <CtaBanner />
+  <CtaBanner pegada />
 </BaseLayout>

@@ -1,20 +1,26 @@
 ---
 import { proceso } from '../data/content';
+
+interface Props {
+  /** Sin margen de arriba en ordenador: la sección anterior tiene el mismo fondo. */
+  pegada?: boolean;
+}
+const { pegada = false } = Astro.props;
 ---
 
-<section class="section">
+<section class:list={['section', pegada && 'lg:pt-0']}>
   <div class="container-prose">
     <div>
       {proceso.etiqueta && <span class="eyebrow">{proceso.etiqueta}</span>}
       <h2 class="mt-3 text-3xl sm:text-4xl text-brand-900">
         {proceso.titulo}
       </h2>
-      {proceso.parrafos.map((p) => <p class="mt-4 text-brand-700">{p}</p>)}
+      {proceso.parrafos.map((p) => <p class="mt-4 text-brand-700 lg:text-lg">{p}</p>)}
     </div>
 
     <ol class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {proceso.pasos.map((paso) => (
-        <li class="relative bg-cream-100 rounded-3xl p-7">
+        <li class="relative bg-cream-100 rounded-3xl p-7 border border-brand-100">
           <span class="absolute -top-4 left-7 px-3 py-1 rounded-full bg-brand-500 text-white text-xs font-semibold tracking-wider">
             {paso.numero}
           </span>

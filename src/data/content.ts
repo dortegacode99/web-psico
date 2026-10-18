@@ -16,8 +16,12 @@ import contactoJson from './textos/contacto.json';
 
 type Texto = string | null | undefined;
 
-/** El texto en una sola línea, sin espacios sobrantes ('' si está vacío). */
-export const limpio = (texto: Texto) => (texto ?? '').replace(/\s+/g, ' ').trim();
+/**
+ * El texto en una sola línea, sin espacios sobrantes ('' si está vacío). Respeta los espacios
+ * que no se parten (U+00A0, p. ej. "24 h"), que se ponen a propósito para que no queden
+ * "24" y "h" en líneas distintas.
+ */
+export const limpio = (texto: Texto) => (texto ?? '').replace(/[^\S\u00a0]+/g, ' ').trim();
 
 /** Parte un texto largo en párrafos (separados por una línea en blanco). */
 export const parrafos = (texto: Texto) => (texto ?? '').split(/\n\s*\n/).map(limpio).filter(Boolean);

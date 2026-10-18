@@ -6,8 +6,8 @@
   },
   "presentacion": {
     "etiqueta": "Sobre mí",
-    "titulo": "Tu dolor y emociones son el punto de partida del proceso",
-    "texto": "Soy Jacobo Chamorro Valladares, **psicólogo general sanitario** con formación en múltiples modelos de entender la psicología y en las diversas dificultades que pueden surgir en la vida de las personas. **Mi hoja de ruta a la hora de trabajar es entender que el sufrimiento de las personas merece mi máximo respeto**, por lo que lo más importante es partir de la escucha, la comprensión y la calidez hacia la historia de cada persona, familia o niño. **El proceso terapéutico no es de juicio, sino de entendimiento** sobre por qué nos sentimos de la forma en que lo hacemos y qué podemos hacer con ello.\n\nMi formación comprende tanto el Grado en Psicología como el Máster Universitario en Psicología General Sanitaria. De forma más específica, tengo **formación en población infanto-juvenil, en ideación suicida y en el manejo de las emociones** en terapia familiar sistémica. Por otro lado, cuento con **varios años de experiencia** en el manejo de dificultades emocionales con personas de diferentes edades, una experiencia práctica y enriquecedora para entender los distintos momentos evolutivos que atraviesa una persona a lo largo de su vida.",
+    "titulo": "Tu dolor y tus emociones son el punto de partida del proceso",
+    "texto": "Soy Jacobo Chamorro Valladares, **psicólogo general sanitario** con formación en múltiples formas de entender la psicología y en las diversas dificultades que pueden surgir en la vida de las personas. **Mi hoja de ruta a la hora de trabajar es entender que el sufrimiento de las personas merece mi máximo respeto**, por lo que lo más importante es partir de la escucha, la comprensión y la calidez hacia la historia de cada persona, familia o niño. **El proceso terapéutico no es de juicio, sino de entendimiento** sobre por qué nos sentimos de la forma en que lo hacemos y qué podemos hacer con ello.\n\nMi formación comprende tanto el Grado en Psicología como el Máster Universitario en Psicología General Sanitaria. De forma más específica, tengo **formación en población infanto-juvenil, en ideación suicida y en el manejo de las emociones** en terapia familiar sistémica. Por otro lado, cuento con **varios años de experiencia** en el manejo de dificultades emocionales con personas de diferentes edades, una experiencia práctica y enriquecedora para entender los distintos momentos evolutivos que atraviesa una persona a lo largo de su vida.",
     "textoAmpliado": "Como psicólogo, mi enfoque es ayudar a que la persona, el niño o la familia no solo se sientan comprendidos, sino que **avancen en las cosas que les resultan importantes**. Los modelos principales que empleo para ello son las terapias de tercera generación y la terapia cognitivo-conductual, junto con algunas técnicas de la terapia familiar sistémica, **adaptando el modelo y la forma de trabajar** a las dificultades y preferencias de cada caso.",
     "botonPortada": "Saber más sobre mí"
   },
@@ -25,15 +25,15 @@
     {
       "icono": "lucide:lock",
       "titulo": "Confidencialidad",
-      "texto": "Lo que se habla en sesión, se queda en sesión. Plataforma segura y conforme al RGPD."
+      "texto": "Lo que se habla en sesión se queda en sesión. Plataforma segura y conforme al RGPD."
     }
   ],
   "formacion": {
-    "etiqueta": "Formación",
+    "etiqueta": "Trayectoria",
     "titulo": "Formación",
     "lista": [
-      "Grado en Psicología — Universidad Complutense de Madrid (2017–2021)",
-      "Máster Universitario en Psicología General Sanitaria — Universidad Pontificia Comillas ICAI-ICADE (2021–2023)",
+      "Grado en Psicología — Universidad Complutense de Madrid (2017⁠–⁠2021)",
+      "Máster Universitario en Psicología General Sanitaria — Universidad Pontificia Comillas ICAI-ICADE (2021⁠–⁠2023)",
       "Máster en Especialización Terapéutica Cognitivo-Conductual en Población Infanto-Juvenil — Universidad Pontificia Comillas ICAI-ICADE (2023)"
     ]
   },

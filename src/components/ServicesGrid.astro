@@ -5,8 +5,10 @@ import ServiceCard from './ServiceCard.astro';
 interface Props {
   /** Fondo blanco (por defecto); sin él, la sección toma el crema de la página. */
   fondoBlanco?: boolean;
+  /** Sin la etiqueta pequeña de encima del título (en /servicios la cabecera ya la dice). */
+  sinEtiqueta?: boolean;
 }
-const { fondoBlanco = true } = Astro.props;
+const { fondoBlanco = true, sinEtiqueta = false } = Astro.props;
 
 const { grupos } = servicios;
 // Con una sola pestaña (la otra se ha quedado sin tarjetas) no hace falta selector.
@@ -17,11 +19,11 @@ const tono = (id: string) => (id === 'infanto-juvenil' ? 'accent' : 'brand');
 <section class:list={['section', fondoBlanco && 'bg-white']}>
   <div class="container-prose" data-servicios>
     <div>
-      {servicios.etiqueta && <span class="eyebrow">{servicios.etiqueta}</span>}
+      {!sinEtiqueta && servicios.etiqueta && <span class="eyebrow">{servicios.etiqueta}</span>}
       <h2 class="mt-3 text-3xl sm:text-4xl text-brand-900">
         {servicios.titulo}
       </h2>
-      {servicios.parrafos.map((p) => <p class="mt-4 text-brand-700">{p}</p>)}
+      {servicios.parrafos.map((p) => <p class="mt-4 text-brand-700 lg:text-lg">{p}</p>)}
     </div>
 
     {conPestanas && (

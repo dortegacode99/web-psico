@@ -83,7 +83,7 @@
     -webkit-backface-visibility: hidden;
   }
   .volteo-on .tarjeta-cara-delante {
-    @apply relative flex h-full items-center gap-4 pr-12 sm:block sm:pr-12 bg-white border-brand-100 transition-[border-color,box-shadow];
+    @apply relative flex h-full items-center gap-4 pr-12 sm:flex-col sm:items-start sm:justify-center sm:gap-0 sm:pr-12 bg-white border-brand-100 transition-[border-color,box-shadow];
   }
   .volteo-on .tarjeta-interior:hover .tarjeta-cara-delante {
     @apply shadow-soft border-brand-300;
