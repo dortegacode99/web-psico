@@ -7,10 +7,15 @@ interface Props {
   fondoBlanco?: boolean;
 }
 const { fondoBlanco = true } = Astro.props;
+
+const { grupos } = servicios;
+// Con una sola pestaña (la otra se ha quedado sin tarjetas) no hace falta selector.
+const conPestanas = grupos.length > 1;
+const tono = (id: string) => (id === 'infanto-juvenil' ? 'accent' : 'brand');
 ---
 
 <section class:list={['section', fondoBlanco && 'bg-white']}>
-  <div class="container-prose">
+  <div class="container-prose" data-servicios>
     <div class="max-w-2xl">
       {servicios.etiqueta && <span class="eyebrow">{servicios.etiqueta}</span>}
       <h2 class="mt-3 text-3xl sm:text-4xl text-brand-900">
@@ -19,8 +24,94 @@ const { fondoBlanco = true } = Astro.props;
       {servicios.parrafos.map((p) => <p class="mt-4 text-brand-700">{p}</p>)}
     </div>
 
-    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {servicios.lista.map((s) => <ServiceCard {...s} />)}
-    </div>
+    {conPestanas && (
+      <div
+        role="tablist"
+        aria-label="Servicios por edad"
+        data-activo={grupos[0].id}
+        class="servicios-pestanas group relative mt-10 grid grid-cols-2 w-full sm:w-auto sm:inline-grid p-1 rounded-full bg-cream-100 border border-brand-100"
+      >
+        <span
+          aria-hidden="true"
+          class="absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-full bg-white shadow-soft ring-1 ring-brand-200 transition-all duration-500 ease-[cubic-bezier(.3,1.25,.5,1)] group-data-[activo=infanto-juvenil]:translate-x-full group-data-[activo=infanto-juvenil]:bg-accent-50 group-data-[activo=infanto-juvenil]:ring-accent-300"
+        ></span>
+        {grupos.map((g, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={g.id}
+            data-grupo={g.id}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`servicios-panel-${g.id}`}
+            tabindex={i === 0 ? 0 : -1}
+            class="relative z-10 rounded-full px-4 sm:px-8 py-2.5 text-center text-brand-600 hover:text-brand-800 aria-selected:text-brand-900 transition-colors"
+          >
+            <span class="block font-display font-semibold">{g.pestana}</span>
+            {g.detalle && <span class="block text-xs opacity-80">{g.detalle}</span>}
+          </button>
+        ))}
+      </div>
+    )}
+
+    {grupos.map((g, i) => (
+      <div
+        id={`servicios-panel-${g.id}`}
+        role={conPestanas ? 'tabpanel' : undefined}
+        aria-labelledby={conPestanas ? g.id : undefined}
+        hidden={i > 0}
+      >
+        {/* Sin JavaScript se ven las dos listas seguidas, cada una con su título. */}
+        {conPestanas && <h3 class="servicios-titulo-sin-js hidden mt-12 font-display text-xl text-brand-900">{g.pestana}</h3>}
+        <div class:list={['servicios-tarjetas grid sm:grid-cols-2 lg:grid-cols-3 gap-6', conPestanas ? 'mt-8' : 'mt-12']}>
+          {g.lista.map((s, orden) => <ServiceCard {...s} tono={tono(g.id)} orden={orden} />)}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
+
+<noscript>
+  <style>
+    [data-servicios] [role='tabpanel'][hidden] { display: block !important; }
+    [data-servicios] [role='tablist'] { display: none !important; }
+    [data-servicios] .servicios-titulo-sin-js { display: block !important; }
+  </style>
+</noscript>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-servicios]').forEach((raiz) => {
+    const lista = raiz.querySelector<HTMLElement>('[role="tablist"]');
+    if (!lista) return;
+    const pestanas = [...lista.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const paneles = pestanas.map((p) => document.getElementById(p.getAttribute('aria-controls') ?? ''));
+
+    const activar = (i: number, { foco = false, animar = true } = {}) => {
+      if (pestanas[i].getAttribute('aria-selected') === 'true') return;
+      // Las tarjetas solo entran animadas al cambiar de pestaña, no al cargar la página.
+      raiz.classList.toggle('servicios-animar', animar);
+      pestanas.forEach((p, j) => {
+        const activa = j === i;
+        p.setAttribute('aria-selected', String(activa));
+        p.tabIndex = activa ? 0 : -1;
+        if (paneles[j]) paneles[j]!.hidden = !activa;
+      });
+      lista.dataset.activo = pestanas[i].dataset.grupo;
+      if (foco) pestanas[i].focus();
+    };
+
+    pestanas.forEach((p, i) => {
+      p.addEventListener('click', () => activar(i));
+      p.addEventListener('keydown', (e) => {
+        const n = pestanas.length;
+        const destino = { ArrowRight: i + 1, ArrowLeft: i - 1 + n, Home: 0, End: n - 1 }[e.key];
+        if (destino === undefined) return;
+        e.preventDefault();
+        activar(destino % n, { foco: true });
+      });
+    });
+
+    // Un enlace a /servicios#infanto-juvenil abre directamente esa pestaña.
+    const desdeEnlace = pestanas.findIndex((p) => `#${p.dataset.grupo}` === location.hash);
+    if (desdeEnlace > 0) activar(desdeEnlace, { animar: false });
+  });
+</script>

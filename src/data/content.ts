@@ -81,14 +81,34 @@ export const sobreMi = {
 
 // --- Servicios ---
 
-/** "En qué puedo ayudarte": tarjetas de servicios (Inicio y Servicios). */
-export const servicios = {
-  ...seccion(serviciosJson.areas),
-  lista: sinVacios(serviciosJson.areas?.lista, (s) => s.titulo).map((s) => ({
+type GrupoJson = {
+  pestana?: Texto;
+  detalle?: Texto;
+  lista?: { icono?: Texto; titulo?: Texto; descripcion?: Texto }[] | null;
+} | null | undefined;
+
+/** Una pestaña de servicios (Adultos / Infanto-juvenil) con sus tarjetas. */
+const grupo = (id: string, g: GrupoJson, pestanaPorDefecto: string) => ({
+  id,
+  pestana: limpio(g?.pestana) || pestanaPorDefecto,
+  detalle: limpio(g?.detalle),
+  lista: sinVacios(g?.lista, (s) => s.titulo).map((s) => ({
     icono: icono(s.icono),
     titulo: limpio(s.titulo),
     descripcion: limpio(s.descripcion),
   })),
+});
+
+/**
+ * "En qué puedo ayudarte" (Inicio y Servicios): una pestaña por público. Una pestaña que se
+ * queda sin tarjetas desaparece; si solo queda una, se pinta sin selector.
+ */
+export const servicios = {
+  ...seccion(serviciosJson.areas),
+  grupos: [
+    grupo('adultos', serviciosJson.areas?.adultos, 'Adultos'),
+    grupo('infanto-juvenil', serviciosJson.areas?.infantoJuvenil, 'Infanto-juvenil'),
+  ].filter((g) => g.lista.length > 0),
 };
 
 /** "El proceso, paso a paso" (Inicio y Servicios). El número de cada paso sale solo. */

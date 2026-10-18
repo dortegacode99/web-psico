@@ -5,13 +5,34 @@ interface Props {
   icono: string;
   titulo: string;
   descripcion: string;
+  /** Color del icono: verde salvia (adultos) o amarillo cálido (infanto-juvenil). */
+  tono?: 'brand' | 'accent';
+  /** Posición en la rejilla: escalona la entrada de las tarjetas al cambiar de pestaña. */
+  orden?: number;
 }
-const { icono, titulo, descripcion } = Astro.props;
+const { icono, titulo, descripcion, tono = 'brand', orden = 0 } = Astro.props;
+
+// Clases completas (no montadas a trozos) para que Tailwind las encuentre al compilar.
+const tonos = {
+  brand: {
+    borde: 'hover:border-brand-300',
+    caja: 'bg-brand-100 group-hover:bg-brand-500',
+    icono: 'text-brand-600 group-hover:text-white',
+  },
+  accent: {
+    borde: 'hover:border-accent-300',
+    caja: 'bg-accent-100 group-hover:bg-accent-400',
+    icono: 'text-accent-700 group-hover:text-brand-900',
+  },
+}[tono];
 ---
 
-<article class="group bg-white rounded-3xl p-7 border border-brand-100 hover:border-brand-300 hover:shadow-soft transition-all">
-  <div class="w-12 h-12 rounded-2xl bg-brand-100 group-hover:bg-brand-500 transition-colors flex items-center justify-center">
-    <Icon name={icono} class="w-6 h-6 text-brand-600 group-hover:text-white transition-colors" />
+<article
+  class:list={['group bg-white rounded-3xl p-7 border border-brand-100 hover:shadow-soft transition-all', tonos.borde]}
+  style={`--i: ${orden}`}
+>
+  <div class:list={['w-12 h-12 rounded-2xl transition-colors flex items-center justify-center', tonos.caja]}>
+    <Icon name={icono} class:list={['w-6 h-6 transition-colors', tonos.icono]} />
   </div>
   <h3 class="mt-5 text-lg font-display font-semibold text-brand-900">{titulo}</h3>
   <p class="mt-2 text-sm text-brand-700 leading-relaxed">{descripcion}</p>

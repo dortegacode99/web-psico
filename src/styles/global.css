@@ -40,4 +40,30 @@
   .eyebrow {
     @apply inline-block text-xs font-semibold tracking-widest uppercase text-brand-500;
   }
+
+  /* Servicios: al cambiar de pestaña las tarjetas entran en cascada (--i = su posición). */
+  .servicios-animar .servicios-tarjetas > * {
+    animation: tarjeta-entra 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 45ms);
+  }
+}
+
+@keyframes tarjeta-entra {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .servicios-animar .servicios-tarjetas > * {
+    animation: none;
+  }
+  .servicios-pestanas > span {
+    transition: none;
+  }
 }

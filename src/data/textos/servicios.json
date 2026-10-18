@@ -8,38 +8,93 @@
     "etiqueta": "Servicios",
     "titulo": "En qué puedo ayudarte",
     "texto": "Cada persona y cada momento son distintos. Estos son algunos de los motivos de consulta más frecuentes, aunque la terapia siempre se adapta a lo que tú necesitas.",
-    "lista": [
-      {
-        "icono": "lucide:wind",
-        "titulo": "Ansiedad y estrés",
-        "descripcion": "Ataques de pánico, preocupación constante, tensión física, pensamientos que no paran y/o sensación de peligro."
-      },
-      {
-        "icono": "lucide:cloud-rain",
-        "titulo": "Depresión y bajo estado de ánimo",
-        "descripcion": "Tristeza prolongada, falta de energía, desmotivación, sensación de vacío y/o alteraciones del sueño (dormir demasiado o muy poco)."
-      },
-      {
-        "icono": "lucide:sparkles",
-        "titulo": "Autoestima y crecimiento personal",
-        "descripcion": "Inseguridad, autoexigencia, dificultad para poner límites o miedo a decepcionar. Construir una relación más amable contigo mismo."
-      },
-      {
-        "icono": "lucide:heart-crack",
-        "titulo": "Duelo y pérdidas",
-        "descripcion": "Acompañamiento ante la muerte de un ser querido, una ruptura, cambios laborales o cualquier pérdida que cuesta integrar."
-      },
-      {
-        "icono": "lucide:users",
-        "titulo": "Relaciones familiares y de pareja",
-        "descripcion": "Conflictos de pareja, dependencia emocional, dificultades para confiar o patrones que se repiten en tus relaciones."
-      },
-      {
-        "icono": "lucide:briefcase",
-        "titulo": "Estrés laboral y burnout",
-        "descripcion": "Saturación, presión, agotamiento, sensación de no llegar, dificultad para desconectar fuera del trabajo y/o desmotivación constante."
-      }
-    ]
+    "adultos": {
+      "pestana": "Adultos",
+      "detalle": "Terapia individual",
+      "lista": [
+        {
+          "icono": "lucide:wind",
+          "titulo": "Ansiedad y estrés",
+          "descripcion": "Ataques de pánico, preocupación constante, tensión física, pensamientos que no paran y/o sensación de peligro."
+        },
+        {
+          "icono": "lucide:cloud-rain",
+          "titulo": "Depresión y bajo estado de ánimo",
+          "descripcion": "Tristeza prolongada, falta de energía, desmotivación, sensación de vacío y/o alteraciones del sueño (dormir demasiado o muy poco)."
+        },
+        {
+          "icono": "lucide:sparkles",
+          "titulo": "Autoestima y crecimiento personal",
+          "descripcion": "Inseguridad, autoexigencia, dificultad para poner límites o miedo a decepcionar. Construir una relación más amable contigo mismo."
+        },
+        {
+          "icono": "lucide:heart-crack",
+          "titulo": "Duelo y pérdidas",
+          "descripcion": "Acompañamiento ante la muerte de un ser querido, una ruptura, cambios laborales o cualquier pérdida que cuesta integrar."
+        },
+        {
+          "icono": "lucide:users",
+          "titulo": "Relaciones familiares y de pareja",
+          "descripcion": "Conflictos de pareja, dependencia emocional, dificultades para confiar o patrones que se repiten en tus relaciones."
+        },
+        {
+          "icono": "lucide:briefcase",
+          "titulo": "Estrés laboral y burnout",
+          "descripcion": "Saturación, presión, agotamiento, sensación de no llegar, dificultad para desconectar fuera del trabajo y/o desmotivación constante."
+        }
+      ]
+    },
+    "infantoJuvenil": {
+      "pestana": "Infanto-juvenil",
+      "detalle": "Niños, adolescentes y familias",
+      "lista": [
+        {
+          "icono": "lucide:flame",
+          "titulo": "Rabietas",
+          "descripcion": "Enfados a la hora de no conseguir lo que piden, dificultad en el establecimiento de rutinas y complicaciones a la hora de hacer tareas."
+        },
+        {
+          "icono": "lucide:moon",
+          "titulo": "Sueño",
+          "descripcion": "Dificultades a la hora de conciliar el sueño, a la hora de despertarse en medio de la noche, no ser capaz de dormir de manera autónoma y miedos asociados a este momento."
+        },
+        {
+          "icono": "lucide:users",
+          "titulo": "Celos y conflictos fraternales",
+          "descripcion": "Conductas disruptivas en las relaciones entre hermanos por disputas reiteradas y/o sentimientos de celos entre ellos."
+        },
+        {
+          "icono": "lucide:flower-2",
+          "titulo": "Duelo infantil",
+          "descripcion": "Acompañamiento en la gestión emocional y conductual del proceso natural del niño ante la pérdida de un ser querido."
+        },
+        {
+          "icono": "lucide:star",
+          "titulo": "Autoestima",
+          "descripcion": "Sentimientos de ser inferior a sus iguales en forma de pensamientos y comentarios de infravaloración propia, así como las emociones consecuentes."
+        },
+        {
+          "icono": "lucide:handshake",
+          "titulo": "Habilidades sociales",
+          "descripcion": "Manejo de las relaciones sociales entendiendo el momento evolutivo del niño o adolescente, promoviendo la puesta en práctica de formas de comunicarse que velen tanto por el individuo propio a la vez que teniendo en cuenta a los demás."
+        },
+        {
+          "icono": "lucide:footprints",
+          "titulo": "Adolescencia",
+          "descripcion": "Gestión de los cambios evolutivos vividos en este periodo, tanto el impacto emocional que generan dichos cambios como el proceso de generación de identidad y mayor importancia de las relaciones sociales."
+        },
+        {
+          "icono": "lucide:cloud-sun",
+          "titulo": "Gestión emocional",
+          "descripcion": "Emociones, y los pensamientos asociados, como la ansiedad, miedo, tristeza, enfado, envidia, frustración..."
+        },
+        {
+          "icono": "lucide:hand-heart",
+          "titulo": "Asesoramiento a padres",
+          "descripcion": "Acompañamiento y recomendación de herramientas a seguir en función de las dificultades encontradas en los hijos."
+        }
+      ]
+    }
   },
   "sesiones": {
     "etiqueta": "Cómo trabajo",

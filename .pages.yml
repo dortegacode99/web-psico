@@ -253,6 +253,7 @@ content:
             component: texto
       - name: areas
         label: En qué puedo ayudarte (sale también en la portada)
+        description: "Dos pestañas, una por público. Si una se queda sin tarjetas, desaparece el selector."
         type: object
         fields:
           - name: etiqueta
@@ -261,21 +262,62 @@ content:
             component: titulo
           - name: texto
             component: texto
-          - name: lista
-            label: Servicios
+          - name: adultos
+            label: Pestaña «Adultos»
             type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{titulo}"
             fields:
-              - name: icono
-                component: icono
-              - name: titulo
-                component: titulo
-              - name: descripcion
-                label: Descripción
-                type: text
+              - name: pestana
+                label: Nombre de la pestaña
+                type: string
+                required: true
+                description: "Ej.: Adultos"
+              - name: detalle
+                label: Texto pequeño bajo el nombre
+                type: string
+                description: "Ej.: Terapia individual. Puede quedar vacío."
+              - name: lista
+                label: Tarjetas
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{titulo}"
+                fields:
+                  - name: icono
+                    component: icono
+                  - name: titulo
+                    component: titulo
+                  - name: descripcion
+                    label: Descripción
+                    type: text
+          - name: infantoJuvenil
+            label: Pestaña «Infanto-juvenil»
+            type: object
+            fields:
+              - name: pestana
+                label: Nombre de la pestaña
+                type: string
+                required: true
+                description: "Ej.: Infanto-juvenil"
+              - name: detalle
+                label: Texto pequeño bajo el nombre
+                type: string
+                description: "Ej.: Niños, adolescentes y familias. Puede quedar vacío."
+              - name: lista
+                label: Tarjetas
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{titulo}"
+                fields:
+                  - name: icono
+                    component: icono
+                  - name: titulo
+                    component: titulo
+                  - name: descripcion
+                    label: Descripción
+                    type: text
       - name: sesiones
         label: Cómo son las sesiones
         type: object
