@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { presentacion } from '../data/content';
+import { site } from '../data/site';
 
 interface Props {
   /** Si true, renderiza versión resumida con CTA a /sobre-mi (para home). */
@@ -12,6 +13,14 @@ const { compact = false, fondoBlanco = false } = Astro.props;
 const parrafos = compact
   ? presentacion.parrafos
   : [...presentacion.parrafos, ...presentacion.ampliacion];
+// En la portada ya sale la foto de Jacobo arriba, así que aquí se queda la acuarela del sendero;
+// en /sobre-mi va su foto.
+const imagen = compact
+  ? {
+      src: '/images/sobre-mi.png',
+      alt: 'Acuarela de un sendero serpenteante en un paisaje natural al amanecer, como metáfora del proceso terapéutico',
+    }
+  : { src: '/images/jacobo-chamorro.jpg', alt: `Retrato de ${site.nombre}` };
 ---
 
 <section class:list={['section', fondoBlanco && 'bg-white']}>
@@ -19,8 +28,8 @@ const parrafos = compact
     <div class="lg:col-span-5 order-2 lg:order-1">
       <div class="aspect-[3/4] rounded-3xl shadow-soft overflow-hidden">
         <img
-          src="/images/sobre-mi.png"
-          alt="Acuarela de un sendero serpenteante en un paisaje natural al amanecer, como metáfora del proceso terapéutico"
+          src={imagen.src}
+          alt={imagen.alt}
           class="w-full h-full object-cover"
           loading="lazy"
           decoding="async"

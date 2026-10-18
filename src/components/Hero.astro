@@ -44,12 +44,15 @@ import { Icon } from 'astro-icon/components';
     </div>
 
     <div class="relative">
-      <div class="aspect-[4/5] rounded-3xl bg-brand-100 shadow-soft overflow-hidden flex items-center justify-center">
-        <!-- EDITAR: sustituir por <Image src="..." alt="Retrato profesional" /> cuando haya foto -->
-        <div class="text-center p-8 text-brand-600">
-          <Icon name="lucide:image" class="w-16 h-16 mx-auto opacity-40" />
-          <p class="mt-3 text-sm">Foto profesional cálida<br/>(sustituir en /public/images)</p>
-        </div>
+      <div class="aspect-[4/5] rounded-3xl bg-brand-100 shadow-soft overflow-hidden">
+        <img
+          src="/images/jacobo-chamorro.jpg"
+          alt={`Retrato de ${site.nombre}`}
+          width="1066"
+          height="1600"
+          class="w-full h-full object-cover"
+          decoding="async"
+        />
       </div>
     </div>
   </div>
