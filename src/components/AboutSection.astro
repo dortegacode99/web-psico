@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { presentacion } from '../data/content';
+import { presentacion, negritas } from '../data/content';
 import { site } from '../data/site';
 
 interface Props {
@@ -43,7 +43,7 @@ const imagen = compact
         {presentacion.titulo}
       </h2>
       <div class="mt-6 space-y-4 text-brand-700 leading-relaxed text-justify">
-        {parrafos.map((p) => <p>{p}</p>)}
+        {parrafos.map((p) => <p set:html={negritas(p)} />)}
       </div>
 
       {compact && (

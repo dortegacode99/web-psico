@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import AboutSection from '../components/AboutSection.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import { Icon } from 'astro-icon/components';
-import { sobreMi } from '../data/content';
+import { sobreMi, negritas } from '../data/content';
 
 const { cabecera, valores, formacion, enfoque } = sobreMi;
 ---
@@ -57,7 +57,7 @@ const { cabecera, valores, formacion, enfoque } = sobreMi;
         {enfoque.etiqueta && <span class="eyebrow">{enfoque.etiqueta}</span>}
         <h2 class="mt-3 text-3xl text-brand-900">{enfoque.titulo}</h2>
         <div class="mt-6 space-y-4 text-brand-700 leading-relaxed text-justify">
-          {enfoque.parrafos.map((p) => <p>{p}</p>)}
+          {enfoque.parrafos.map((p) => <p set:html={negritas(p)} />)}
         </div>
       </div>
     </div>

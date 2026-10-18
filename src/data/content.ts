@@ -22,6 +22,18 @@ export const limpio = (texto: Texto) => (texto ?? '').replace(/\s+/g, ' ').trim(
 /** Parte un texto largo en párrafos (separados por una línea en blanco). */
 export const parrafos = (texto: Texto) => (texto ?? '').split(/\n\s*\n/).map(limpio).filter(Boolean);
 
+/**
+ * Pasa un párrafo a HTML con las **negritas** marcadas entre dobles asteriscos. Escapa todo lo
+ * demás, así que un texto nunca puede meter HTML en la página. Se pinta con set:html.
+ */
+export const negritas = (texto: string) =>
+  texto
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-brand-900">$1</strong>');
+
 /** Icono de respaldo si una tarjeta se guarda sin icono (sin él, el build fallaría). */
 const icono = (nombre: Texto) => limpio(nombre) || 'lucide:sparkles';
 
