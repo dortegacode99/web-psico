@@ -154,3 +154,10 @@
     animation: none;
   }
 }
+
+/* Safari antiguo solo entiende el guionado automático con prefijo (párrafos justificados). */
+@layer utilities {
+  .hyphens-auto {
+    -webkit-hyphens: auto;
+  }
+}

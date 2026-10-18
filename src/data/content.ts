@@ -100,14 +100,15 @@ const grupo = (id: string, g: GrupoJson, pestanaPorDefecto: string) => ({
 });
 
 /**
- * "En qué puedo ayudarte" (Inicio y Servicios): una pestaña por público. Una pestaña que se
+ * "En qué puedo ayudarte" (Inicio y Servicios): una pestaña por público, en este orden (la
+ * primera es la que sale abierta al entrar). Una pestaña que se
  * queda sin tarjetas desaparece; si solo queda una, se pinta sin selector.
  */
 export const servicios = {
   ...seccion(serviciosJson.areas),
   grupos: [
-    grupo('adultos', serviciosJson.areas?.adultos, 'Adultos'),
     grupo('infanto-juvenil', serviciosJson.areas?.infantoJuvenil, 'Infanto-juvenil'),
+    grupo('adultos', serviciosJson.areas?.adultos, 'Adultos'),
   ].filter((g) => g.lista.length > 0),
 };
 
