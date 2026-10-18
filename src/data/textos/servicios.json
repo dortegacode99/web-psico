@@ -84,9 +84,9 @@
           "descripcion": "Gestión de los cambios evolutivos vividos en este periodo, tanto el impacto emocional que generan dichos cambios como el proceso de generación de identidad y mayor importancia de las relaciones sociales."
         },
         {
-          "icono": "lucide:cloud-sun",
-          "titulo": "Gestión emocional",
-          "descripcion": "Manejo de las emociones y de los pensamientos asociados a ellas, como la ansiedad, el miedo, la tristeza, el enfado, la envidia o la frustración."
+          "icono": "lucide:book-open",
+          "titulo": "Ansiedad ante los exámenes",
+          "descripcion": "Ansiedad, preocupaciones e inseguridad con respecto al rendimiento académico, así como su manifestación en los propios exámenes y en la realización de tareas."
         },
         {
           "icono": "lucide:hand-heart",
